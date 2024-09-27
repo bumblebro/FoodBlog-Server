@@ -1,0 +1,12 @@
+import Link from "next/link";
+
+function page() {
+  return (
+    <div className="flex justify-center gap-4 mt-48 text-2xl">
+      <Link href={"/upload"}>Upload</Link>
+      <Link href={"/upload2"}>Upload2</Link>
+    </div>
+  );
+}
+
+export default page;
