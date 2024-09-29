@@ -85,16 +85,16 @@ export default async function UPLOAD({
     // `;
 
     const promptForTitle = `
-Generate 100 possible, unique, non-repetitive, and captivating click-bait titles for a blog under the sub-subsection "${subSubSection}", which falls under the subsection "${subSection}" and section "${section}" updated as of ${formattedDate}.
+Generate 100 possible, unique, non-repetitive, and captivating click-bait titles for a Food and Drink niche blog under the sub-subsection "${subSubSection}", which falls under the subsection "${subSection}" and section "${section}" updated as of ${formattedDate}.
 
 Each title should follow one of these blog formats:
-  - Listicles (e.g., "10 Best... ")
-  - Review Blogs (e.g., "In-Depth Review of...")
-  - Comparison Blogs (e.g., "Product A vs. Product B: Which Is Better?")
-  - How-To/Tutorial Blogs (e.g., "How to...")
-  - Roundup Blogs (e.g., "Top 5...")
-  - Buying Guides (e.g., "Ultimate Buying Guide for...")
-  - Opinion Blogs (e.g., "Why I Think...")
+  - Listicles (e.g., "10 Best Coffee Shops in [City]")
+  - Review Blogs (e.g., "In-Depth Review of [Brand]'s New Wine")
+  - Comparison Blogs (e.g., "Craft Beer vs. Artisan Ale: Which Is Worth Your Money?")
+  - How-To/Tutorial Blogs (e.g., "How to Make the Perfect Homemade Pizza")
+  - Roundup Blogs (e.g., "Top 5 Summer Cocktails to Try This Year")
+  - Buying Guides (e.g., "Ultimate Buying Guide for Kitchen Blenders")
+  - Opinion Blogs (e.g., "Why I Think [Restaurant] Is the Best in Town")
 
 The titles must be:
 - Creative, captivating, and designed to make the reader want to click.
@@ -216,7 +216,7 @@ The response should be structured as a JSON array of objects with the following 
     //   `;
 
     const prompt = `
-    Generate a well-researched, engaging, and structured blog post around 1500 to 2500 words with the title "${title}" updated as of ${formattedDate}. The blog should be written in a clear, informative, conversational, personal tone and style of storytelling. Ensure the content is:
+    Generate a well-researched, engaging, and structured blog post around 1500 to 2500 words for Food and Drink niche with the title "${title}" updated as of ${formattedDate}. The blog should be written in a clear, informative, conversational, personal tone and style of storytelling. Ensure the content is:
     
     - Begin the blog with a relatable, personal anecdote or story that ties into the topic.
     - Maintain a conversational flow, making the reader feel as if they're being spoken to directly.

@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Blogs {
+model FoodBlogs {
   id        String   @id @default(uuid())
   author    String 
   title     String     @unique

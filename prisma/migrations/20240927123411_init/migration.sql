@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "Blogs" (
+CREATE TABLE "FoodBlogs" (
     "id" TEXT NOT NULL,
     "author" TEXT NOT NULL,
     "title" TEXT NOT NULL,
@@ -14,11 +14,11 @@ CREATE TABLE "Blogs" (
     "seo" JSONB NOT NULL,
     "creationDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "Blogs_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "FoodBlogs_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Blogs_title_key" ON "Blogs"("title");
+CREATE UNIQUE INDEX "FoodBlogs_title_key" ON "FoodBlogs"("title");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Blogs_slug_key" ON "Blogs"("slug");
+CREATE UNIQUE INDEX "FoodBlogs_slug_key" ON "FoodBlogs"("slug");

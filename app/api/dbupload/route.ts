@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     console.log(body);
-    const newBlog = await prisma.blogs.create({
+    const newBlog = await prisma.foodBlogs.create({
       data: body,
     });
     console.log("Created blog:", newBlog);

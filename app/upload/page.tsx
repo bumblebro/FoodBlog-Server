@@ -24,9 +24,9 @@ interface sections {
 function Upload() {
   const sections: sections = subSections;
 
-  const [section, setSection] = useState<string>("Tech");
-  const [subSection, setSubSection] = useState<string>("Apple");
-  const [subSubSection, setSubSubSection] = useState<string>("iPhone");
+  const [section, setSection] = useState<string>("Cuisine-Types");
+  const [subSection, setSubSection] = useState<string>("Italian");
+  const [subSubSection, setSubSubSection] = useState<string>("Pasta");
   const [loading, setLoading] = useState<boolean>(false);
   const [blog, setBlog] = useState([{ blog: "", query: "" }]);
   const [updatedBlog, setUpdatedBlog] = useState<updatedBlog[]>([]);
