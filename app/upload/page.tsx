@@ -68,17 +68,22 @@ function Upload() {
     console.log(`blog`, covertedBlog);
     if (
       covertedBlog.pageTitle.includes("[") ||
-      covertedBlog.pageTitle.includes("]")
+      covertedBlog.pageTitle.includes("]") ||
+      covertedBlog.pageTitle.includes("Image Query")
     ) {
       throw new Error(
-        'String contains forbidden characters "[" or "]". in the Title'
+        'String contains forbidden characters "[" or "]" or "Image Query". in the Title'
       );
     }
 
     covertedBlog.content.map((item: any) => {
-      if (item.description.includes("[") || item.description.includes("]")) {
+      if (
+        item.description.includes("[") ||
+        item.description.includes("]") ||
+        item.description.includes("Image Query")
+      ) {
         throw new Error(
-          'String contains forbidden characters "[" or "]". in the description'
+          'String contains forbidden characters "[" or "]" or "Image Query". in the description'
         );
       }
     });

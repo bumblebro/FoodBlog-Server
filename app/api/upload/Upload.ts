@@ -84,17 +84,20 @@ export default async function UPLOAD({
     // }
     // `;
 
+    // Each title should follow one of these blog formats:
+    // - Listicles (e.g., "10 Best Coffee Shops in [City]")
+    // - Review Blogs (e.g., "In-Depth Review of [Brand]'s New Wine")
+    // - Comparison Blogs (e.g., "Craft Beer vs. Artisan Ale: Which Is Worth Your Money?")
+    // - How-To/Tutorial Blogs (e.g., "How to Make the Perfect Homemade Pizza")
+    // - Roundup Blogs (e.g., "Top 5 Summer Cocktails to Try This Year")
+    // - Buying Guides (e.g., "Ultimate Buying Guide for Kitchen Blenders")
+    // - Opinion Blogs (e.g., "Why I Think [Restaurant] Is the Best in Town")
+
     const promptForTitle = `
-Generate 100 possible, unique, non-repetitive, and captivating click-bait titles for a Food and Drink niche blog under the sub-subsection "${subSubSection}", which falls under the subsection "${subSection}" and section "${section}" updated as of ${formattedDate}.
+Generate 100 possible,recipe,  unique, non-repetitive, and captivating click-bait recipe titles for a Food and Drink niche blog under the sub-subsection "${subSubSection}", which falls under the subsection "${subSection}" and section "${section}" updated as of ${formattedDate}.
 
 Each title should follow one of these blog formats:
-  - Listicles (e.g., "10 Best Coffee Shops in [City]")
-  - Review Blogs (e.g., "In-Depth Review of [Brand]'s New Wine")
-  - Comparison Blogs (e.g., "Craft Beer vs. Artisan Ale: Which Is Worth Your Money?")
-  - How-To/Tutorial Blogs (e.g., "How to Make the Perfect Homemade Pizza")
-  - Roundup Blogs (e.g., "Top 5 Summer Cocktails to Try This Year")
-  - Buying Guides (e.g., "Ultimate Buying Guide for Kitchen Blenders")
-  - Opinion Blogs (e.g., "Why I Think [Restaurant] Is the Best in Town")
+   - How-To/Tutorial Blogs (e.g., "How to Make the Perfect Homemade Pizza")
 
 The titles must be:
 - Creative, captivating, and designed to make the reader want to click.
@@ -255,49 +258,50 @@ The response should be structured as a JSON array of objects with the following 
     
    ### Example Output:
 
-        {
-          "author": "Jane Smith",
-          "quote": "Mastering your finances isn't just about numbers—it's about creating a life that truly reflects your values.",
-          "pageTitle": "How to Take Control of Your Finances and Build a Life You Love",
-          "imageQuery": "person managing finances at home",
-          "seo": {
-            "metaDescription": "Discover how to manage your finances wisely and build a life that aligns with your values and goals.",
-            "ogTitle": "How to Take Control of Your Finances and Build a Life You Love",
-            "ogDescription": "Learn the key steps to take control of your finances and start building a life that reflects your personal goals and values.",
-            "primaryKeywords": ["personal finance", "money management", "budgeting tips"],
-            "secondaryKeywords": ["financial freedom", "value-based spending", "savings goals"]
-          },
-          "content": [
-            {
-              "query": "family road trip in a small car",
-              "description": "Growing up, my family didn’t take expensive vacations. In fact, I remember the times we squeezed into a tiny, two-bed motel room—four of us, in a space made for two. My parents were always looking for ways to stretch a dollar. Back then, I thought this was just how things were, but now, looking back, I realize it was my first lesson in personal finance. Managing money isn't just about earning more, it’s about getting the most value out of what you have."
-            },
-            {
-            "query": "person creating a budget at a kitchen table",
-              "description": "## Why Budgeting is the First Step\n\nYears later, when I started managing my own money, that lesson stuck with me. The first real step to financial freedom is learning how to budget. Just like my parents, who carefully planned every dollar, I realized that a budget doesn’t limit you—it actually gives you freedom. When you know where your money is going, you’re in control. You can start making decisions that support the life you want to live."
-            },
-            {
-              "query": "person enjoying a luxurious vacation",
-              "description": "## The Power of Value-Based Spending\n\nNot long ago, I took a trip to Italy with a few friends. We didn’t hold back on experiences—fine dining, boat rides, and exploring beautiful towns. But here’s the thing: we planned for it. I cut back on things that didn’t matter to me, like fancy gadgets and expensive clothes, so I could spend more on what did—travel, memories, and experiences. This is what I call value-based spending, and it’s key to building your rich life."
-            },
-            {
-              "query": "person putting money in a savings jar",
-              "description": "## Savings: Your Secret Weapon\n\nI’ll admit, saving didn’t always come naturally to me. I used to think it was about depriving myself of the things I enjoyed. But then I learned how powerful savings can be. It’s not about what you can’t spend—it’s about what you’re saving for. Whether it's an emergency fund, a new home, or a dream vacation, every dollar saved gets you closer to the things that matter most."
-            },
-            {
-              "query": "person investing in the stock market",
-              "description": "## Investing in Your Future\n\nOnce you’ve mastered saving, the next step is investing. When I got my first paycheck, I spent most of it right away. But now, I see investing as planting seeds for the future. The earlier you start, the more time your money has to grow. Whether it's stocks, real estate, or retirement funds, investing is about building a future that gives you the freedom to live on your terms."
-            },
-            {
-              "query": "person planning finances on a notebook",
-              "description": "## Design Your Financial Plan\n\nNow, here’s where it all comes together. Just like my parents did with our vacations, you can design a financial plan that reflects your values. It’s not about making more money—it's about making your money work for you. Maybe you want to travel, spend more time with family, or simply enjoy peace of mind knowing you have financial security. Whatever it is, start designing your plan today and take control of your financial future."
-            },
-            {
-              "query": "person living a happy, fulfilled life",
-              "description": "## Conclusion: Your Rich Life Awaits\n\nLiving a rich life isn’t about having the most money—it’s about living in alignment with what matters most to you. Whether it’s budgeting, saving, or investing, the key is to start taking small steps today. Just like those family road trips taught me the value of money, you can start applying these lessons to create a life filled with the things that bring you joy. Your rich life is waiting—start building it today."
-            }
-          ]
-        }
+   {
+  "author": "Jane Smith",
+  "quote": "Cooking isn't just about the ingredients—it’s about creating something that nourishes both body and soul.",
+  "pageTitle": "How to Create the Perfect Homemade Pizza",
+  "imageQuery": "person making homemade pizza",
+  "seo": {
+    "metaDescription": "Learn how to make a delicious homemade pizza from scratch with this easy-to-follow recipe.",
+    "ogTitle": "How to Create the Perfect Homemade Pizza",
+    "ogDescription": "Follow this step-by-step guide to make a perfect pizza at home, from kneading the dough to adding your favorite toppings.",
+    "primaryKeywords": ["homemade pizza", "pizza recipe", "easy pizza dough"],
+    "secondaryKeywords": ["Italian cuisine", "best pizza toppings", "how to make pizza at home"]
+  },
+  "content": [
+    {
+      "query": "fresh ingredients for homemade pizza",
+      "description": "Growing up, Sunday nights were pizza nights. My mom would knead the dough from scratch while we excitedly picked out our toppings. It was a ritual that brought us together. Now, when I make pizza at home, I realize it's not just about the taste—it's about the process of creating something with love. Here’s how you can start your own homemade pizza tradition."
+    },
+    {
+      "query": "person kneading pizza dough",
+      "description": "## Step 1: Making the Perfect Dough\n\nA good pizza starts with the dough. You don’t need fancy equipment—just your hands and some basic ingredients. Combine flour, water, yeast, and a pinch of salt. Knead the dough for about 10 minutes until it's smooth and elastic. Let it rest in a warm spot, covered with a damp cloth, for about an hour. The dough will rise, giving you that soft, airy base every pizza needs."
+    },
+    {
+      "query": "person spreading tomato sauce on pizza dough",
+      "description": "## Step 2: Sauce it Up\n\nOnce the dough has risen, it’s time to add the sauce. You can use a store-bought sauce, but I always prefer to make my own. A simple mix of crushed tomatoes, garlic, olive oil, and basil does the trick. Spread it evenly over your dough, leaving a bit of space around the edges for the perfect crust."
+    },
+    {
+      "query": "person adding cheese and toppings to pizza",
+      "description": "## Step 3: Cheese and Toppings Galore\n\nNow comes the fun part—toppings! Start with a generous layer of mozzarella cheese. From there, it’s up to you. Go classic with pepperoni, or get creative with vegetables, mushrooms, or even some pineapple (controversial, I know!). The key is to balance flavors and textures to make every bite delicious."
+    },
+    {
+      "query": "pizza baking in an oven",
+      "description": "## Step 4: Bake to Perfection\n\nPreheat your oven to its highest setting, ideally around 500°F (260°C). Carefully slide your pizza onto a hot pizza stone or baking sheet. Bake for 10-15 minutes, or until the crust is golden and the cheese is bubbly and slightly browned. The high temperature ensures that the crust gets crispy while the toppings stay fresh and flavorful."
+    },
+    {
+      "query": "person slicing a fresh pizza",
+      "description": "## Step 5: Slice and Serve\n\nOnce your pizza is done baking, let it cool for a couple of minutes before slicing it up. There’s nothing quite like that first bite—crisp on the outside, soft on the inside, with the perfect mix of sauce, cheese, and toppings. Serve it with a side of salad or enjoy it on its own. Either way, your homemade pizza will be a hit."
+    },
+    {
+      "query": "family enjoying pizza together",
+      "description": "## Conclusion: Make Pizza Night a Tradition\n\nMaking pizza from scratch isn’t just about eating—it’s about the joy of creating something delicious with your own hands. Whether you're making it for yourself or sharing it with friends and family, the experience is always rewarding. Start your own pizza night tradition and enjoy the process as much as the final result!"
+    }
+  ]
+}
+
   `;
 
     const schema = {
