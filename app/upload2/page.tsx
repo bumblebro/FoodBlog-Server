@@ -6,6 +6,7 @@ import { error } from "console";
 import { useEffect, useState } from "react";
 import slugify from "slugify";
 import UPLOAD from "../api/upload/Upload";
+import HUMANIZE from "../api/humanize/route";
 
 // Refreshes the current page
 function refreshPage() {
@@ -142,15 +143,39 @@ function Upload2() {
             setConsoleData((prev) => [...prev, `IMAGE GENERATED, ${link}`]);
 
             console.log("IMAGE GENERATED", link);
+
+            console.log(`desccccc`, item.description);
+            let desc: any = await HUMANIZE(item.description);
+            const newdesc = await JSON.parse(desc);
+
+            console.log(newdesc);
+            // const link = "hello";
+            console.log("links", link);
             return {
               // title: item.title,
-              description: item.description,
+              description: newdesc,
+              // description: item.description,
               url: link,
               alt: item.query,
             };
           }
         )
       );
+
+      results.map((item: any) => {
+        if (
+          item.description.includes("[") ||
+          item.description.includes("]") ||
+          item.description.includes("}") ||
+          item.description.includes("{") ||
+          item.description.includes("Image Query")
+        ) {
+          throw new Error(
+            'String contains forbidden characters "[" or "]" or "Image Query". in the description'
+          );
+        }
+      });
+
       setConsoleData((prev) => [
         ...prev,
         `GETTING IMAGES FOR CONTENT SUCCESSFULL`,

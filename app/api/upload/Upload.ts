@@ -102,7 +102,7 @@ Each title should follow one of these blog formats:
 The titles must be:
 - Avoid complex words by using simple vocabulary like ‘find out’ instead of ‘ascertain’ or ‘use’ over ‘utilize’.
 - Make it less generic by adding a personal touch using opinions, real-life examples, etc. For instance, “One of my friends told me about their fun hiking experience in the mountains.”
-- Add emotional cues, words, and phrases. For example, “I know how difficult it can be to lose a loved one.”
+    - Add emotional cues, words, and phrases. For example, “I know how difficult it can be to lose a loved one.”
 - Creative, captivating, and designed to make the reader want to click.
 - Reflective of the specific blog format chosen.
 - Clearly associated with the following topic hierarchy: 
@@ -222,7 +222,11 @@ The response should be structured as a JSON array of objects with the following 
     //   `;
 
     const prompt = `
-    Generate a well-researched, engaging, and structured blog post around 1500 to 2500 words for Food and Drink niche with the title "${title}" updated as of ${formattedDate}. The blog should be written in a clear, informative, conversational, personal tone and style of storytelling. Ensure the content is:
+    Write content a well-researched, engaging, and structured blog post around 1500 to 2500 words for Food and Drink niche that avoids repetitive phrasing, formulaic structures, and predictable sentence patterns, which are often detectable by AI content tools. Instead, rewrite these unnatural elements by varying sentence structures and word choices in a way that mimics human writing styles. Ensure the text has a natural flow and maintains reader engagement throughout, just like human writers who enhance clarity and readability through diverse language use.
+
+Make sure the content replicates the engaging and natural qualities of human-authored text, ensuring it is indistinguishable from human writing. The final output should be precise, pass AI detection tools, and be enhanced for readability, flow, and engagement.
+
+The algorithms you use should account for language nuances—syntax, semantics, and context—making intelligent edits that humanize the AI-generated text without changing its original intent or meaning. Ensure that the output improves SEO performance and provides a positive reader experience, while also remaining completely undetectable by AI content detection algorithms with the title "${title}" updated as of ${formattedDate}. The blog should be written in a clear, informative, conversational, personal tone and style of storytelling. Ensure the content is:
 
     Match this style: https://pinchofyum.com/ricotta-meatballs-with-the-crispy-topping
 

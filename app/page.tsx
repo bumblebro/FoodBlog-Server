@@ -5,6 +5,7 @@ function page() {
     <div className="flex justify-center gap-4 mt-48 text-2xl">
       <Link href={"/upload"}>Upload</Link>
       <Link href={"/upload2"}>Upload2</Link>
+      <Link href={"/upload3"}>Upload3</Link>
     </div>
   );
 }
