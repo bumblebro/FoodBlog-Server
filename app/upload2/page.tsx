@@ -6,7 +6,7 @@ import { error } from "console";
 import { useEffect, useState } from "react";
 import slugify from "slugify";
 import UPLOAD from "../api/upload/Upload";
-import HUMANIZE from "../api/humanize/route";
+import HUMANIZE from "../api/humanize/Humanize";
 
 // Refreshes the current page
 function refreshPage() {

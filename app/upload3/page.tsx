@@ -6,7 +6,7 @@ import { ChangeEvent, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import slugify from "slugify";
 import UPLOAD from "../api/upload/Upload";
-import HUMANIZE from "../api/humanize/route";
+import HUMANIZE from "../api/humanize/Humanize";
 
 interface blogs {
   blog: string;
