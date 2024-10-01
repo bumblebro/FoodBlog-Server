@@ -220,7 +220,11 @@ The response should be structured as a JSON array of objects with the following 
 
     const prompt = `
     Generate a well-researched, engaging, and structured blog post around 1500 to 2500 words for Food and Drink niche with the title "${title}" updated as of ${formattedDate}. The blog should be written in a clear, informative, conversational, personal tone and style of storytelling. Ensure the content is:
-    
+
+    - Avoid complex words by using simple vocabulary like ‘find out’ instead of ‘ascertain’ or ‘use’ over ‘utilize’.
+    - Make it less generic by adding a personal touch using opinions, real-life examples, etc. For instance, “One of my friends told me about their fun hiking experience in the mountains.”
+    - Add emotional cues, words, and phrases. For example, “I know how difficult it can be to lose a loved one.”
+    - Try to include deliberate errors in the text like typos, grammar mistakes, and incomplete sentences from time to time.
     - Begin the blog with a relatable, personal anecdote or story that ties into the topic.
     - Maintain a conversational flow, making the reader feel as if they're being spoken to directly.
     - Use humor, informal language, and personal insights where appropriate.
@@ -255,7 +259,7 @@ The response should be structured as a JSON array of objects with the following 
        - Secondary Keywords: Focus on moderate search volume and competition, with a related but distinct focus.
     
     Make sure the content is thoroughly researched and provides value to readers. Avoid filler content or placeholders, and focus on delivering substantial, fact-based information. Always use specific and relevant names, brands, or details related to the title provided.
-    
+
    ### Example Output:
 
    {
