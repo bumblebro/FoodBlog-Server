@@ -100,6 +100,9 @@ Each title should follow one of these blog formats:
    - How-To/Tutorial Blogs (e.g., "How to Make the Perfect Homemade Pizza")
 
 The titles must be:
+- Avoid complex words by using simple vocabulary like ‘find out’ instead of ‘ascertain’ or ‘use’ over ‘utilize’.
+- Make it less generic by adding a personal touch using opinions, real-life examples, etc. For instance, “One of my friends told me about their fun hiking experience in the mountains.”
+- Add emotional cues, words, and phrases. For example, “I know how difficult it can be to lose a loved one.”
 - Creative, captivating, and designed to make the reader want to click.
 - Reflective of the specific blog format chosen.
 - Clearly associated with the following topic hierarchy: 
@@ -220,6 +223,8 @@ The response should be structured as a JSON array of objects with the following 
 
     const prompt = `
     Generate a well-researched, engaging, and structured blog post around 1500 to 2500 words for Food and Drink niche with the title "${title}" updated as of ${formattedDate}. The blog should be written in a clear, informative, conversational, personal tone and style of storytelling. Ensure the content is:
+
+    Match this style: https://pinchofyum.com/ricotta-meatballs-with-the-crispy-topping
 
     - Avoid complex words by using simple vocabulary like ‘find out’ instead of ‘ascertain’ or ‘use’ over ‘utilize’.
     - Make it less generic by adding a personal touch using opinions, real-life examples, etc. For instance, “One of my friends told me about their fun hiking experience in the mountains.”
