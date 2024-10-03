@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import slugify from "slugify";
 import UPLOAD from "../api/upload/Upload";
 import HUMANIZE from "../api/humanize/Humanize";
+import { CONVERT } from "../api/humanizee/Convert";
 
 // Refreshes the current page
 function refreshPage() {
@@ -144,16 +145,51 @@ function Upload2() {
 
             console.log("IMAGE GENERATED", link);
 
-            console.log(`desccccc`, item.description);
-            let desc: any = await HUMANIZE(item.description);
-            const newdesc = await JSON.parse(desc);
+            // console.log(`desccccc`, item.description);
+            // let desc: any = await HUMANIZE(item.description);
+            // const newdesc = await JSON.parse(desc);
 
-            console.log(newdesc);
-            // const link = "hello";
-            console.log("links", link);
+            // console.log(newdesc);
+            // // const link = "hello";
+            // console.log("links", link);
+            // return {
+            //   // title: item.title,
+            //   description: newdesc,
+            //   // description: item.description,
+            //   url: link,
+            //   alt: item.query,
+            // };
+
+            async function runUntilResponse(item: string) {
+              let response = null;
+
+              while (response === null) {
+                response = await CONVERT(item); // Call the function
+
+                if (response !== null) {
+                  console.log("Got a non-null response:", response);
+                  // Process or return the non-null response
+                  return response;
+                }
+
+                console.log("Response is null, trying again...");
+                // Optional: Add a delay between retries
+                await new Promise((resolve) => setTimeout(resolve, 1000)); // 1-second delay
+              }
+            }
+
+            const response = await runUntilResponse(item.description);
+
+            // const data = await response.json();
+            // if (response.ok) {
+            //   newdescription = data.humanizedContent;
+            // } else {
+            //   throw new Error("Humanise Content Failed");
+            // }
+
             return {
               // title: item.title,
-              description: newdesc,
+              description: response,
               // description: item.description,
               url: link,
               alt: item.query,
@@ -220,12 +256,14 @@ function Upload2() {
 
           console.log("UPLOAD SUCCESSFULL", res.data, "STARTING NEXT CYCLE...");
           setSuccessCount((prev) => prev + 1);
+          console.clear(); // Clears the console
           startProcess(); // Continue the process if running
         } else {
           setConsoleData((prev) => [...prev, `UPLOAD FAILED, RETRYING...`]);
 
           console.error("UPLOAD FAILED, RETRYING...");
           setFailedCount((prev) => prev + 1);
+          console.clear(); // Clears the console
           startProcess(); // Retry if failed
         }
       }
@@ -233,6 +271,7 @@ function Upload2() {
       setConsoleData((prev) => [...prev, `ERROR OCCURED, RETRYING...`]);
       console.error("ERROR OCCURED, RETRYING...");
       setFailedCount((prev) => prev + 1);
+      console.clear(); // Clears the console
       startProcess(); // Handle errors and retry
     }
   }

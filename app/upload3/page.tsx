@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import slugify from "slugify";
 import UPLOAD from "../api/upload/Upload";
 import HUMANIZE from "../api/humanize/Humanize";
+import { CONVERT } from "../api/humanizee/Convert";
 
 interface blogs {
   blog: string;
@@ -53,11 +54,6 @@ function Upload() {
     console.log("Clicked");
     setLoading(true);
     setUpdatedBlog([]);
-    // const blogs = await axios.post("/api/upload", {
-    //   section,
-    //   subSection,
-    //   subSubSection,
-    // });
 
     const blogs: any = await UPLOAD({
       section,
@@ -110,16 +106,42 @@ function Upload() {
           } else {
             link = await searchImages(item.query);
           }
-          console.log(`desccccc`, item.description);
-          let desc: any = await HUMANIZE(item.description);
-          const newdesc = await JSON.parse(desc);
+          // console.log(`desccccc`, item.description);
+          // let desc: any = await HUMANIZE(item.description);
+          // const newdesc = await JSON.parse(desc);
+          // const response = await CONVERT(item.description);
+          // console.log(`HUMANISED>>>>>>>>`, response);
 
-          console.log(newdesc);
-          // const link = "hello";
-          console.log("links", link);
+          async function runUntilResponse(item: string) {
+            let response = null;
+
+            while (response === null) {
+              response = await CONVERT(item); // Call the function
+
+              if (response !== null) {
+                console.log("Got a non-null response:", response);
+                // Process or return the non-null response
+                return response;
+              }
+
+              console.log("Response is null, trying again...");
+              // Optional: Add a delay between retries
+              await new Promise((resolve) => setTimeout(resolve, 1000)); // 1-second delay
+            }
+          }
+
+          const response = await runUntilResponse(item.description);
+
+          // const data = await response.json();
+          // if (response.ok) {
+          //   newdescription = data.humanizedContent;
+          // } else {
+          //   throw new Error("Humanise Content Failed");
+          // }
+
           return {
             // title: item.title,
-            description: newdesc,
+            description: response,
             // description: item.description,
             url: link,
             alt: item.query,
@@ -128,19 +150,19 @@ function Upload() {
       )
     );
 
-    results.map((item: any) => {
-      if (
-        item.description.includes("[") ||
-        item.description.includes("]") ||
-        item.description.includes("}") ||
-        item.description.includes("{") ||
-        item.description.includes("Image Query")
-      ) {
-        throw new Error(
-          'String contains forbidden characters "[" or "]" or "Image Query". in the description'
-        );
-      }
-    });
+    // results.map((item: any) => {
+    //   if (
+    //     item.description.includes("[") ||
+    //     item.description.includes("]") ||
+    //     item.description.includes("}") ||
+    //     item.description.includes("{") ||
+    //     item.description.includes("Image Query")
+    //   ) {
+    //     throw new Error(
+    //       'String contains forbidden characters "[" or "]" or "Image Query". in the description'
+    //     );
+    //   }
+    // });
 
     setUpdatedBlog(results);
 
