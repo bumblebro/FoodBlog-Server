@@ -8,7 +8,7 @@ const HumanizeForm = () => {
   const [content, setContent] = useState("");
   const [result, setResult] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     const response = await CONVERT(content);
     console.log(`response`, response);
