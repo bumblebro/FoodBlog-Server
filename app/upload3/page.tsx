@@ -126,7 +126,7 @@ function Upload() {
 
               console.log("Response is null, trying again...");
               // Optional: Add a delay between retries
-              await new Promise((resolve) => setTimeout(resolve, 1000)); // 1-second delay
+              // await new Promise((resolve) => setTimeout(resolve, 1000)); // 1-second delay
             }
           }
 

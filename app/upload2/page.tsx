@@ -162,8 +162,11 @@ function Upload2() {
 
             async function runUntilResponse(item: string) {
               let response = null;
-
+              let count = 0;
               while (response === null) {
+                if (count == 4) {
+                  throw new Error("Maximum limit reached for humanizing...");
+                }
                 response = await CONVERT(item); // Call the function
 
                 if (response !== null) {
@@ -171,10 +174,10 @@ function Upload2() {
                   // Process or return the non-null response
                   return response;
                 }
-
+                count++;
                 console.log("Response is null, trying again...");
                 // Optional: Add a delay between retries
-                await new Promise((resolve) => setTimeout(resolve, 1000)); // 1-second delay
+                // await new Promise((resolve) => setTimeout(resolve, 1000)); // 1-second delay
               }
             }
 
@@ -198,19 +201,19 @@ function Upload2() {
         )
       );
 
-      results.map((item: any) => {
-        if (
-          item.description.includes("[") ||
-          item.description.includes("]") ||
-          item.description.includes("}") ||
-          item.description.includes("{") ||
-          item.description.includes("Image Query")
-        ) {
-          throw new Error(
-            'String contains forbidden characters "[" or "]" or "Image Query". in the description'
-          );
-        }
-      });
+      // results.map((item: any) => {
+      //   if (
+      //     item.description.includes("[") ||
+      //     item.description.includes("]") ||
+      //     item.description.includes("}") ||
+      //     item.description.includes("{") ||
+      //     item.description.includes("Image Query")
+      //   ) {
+      //     throw new Error(
+      //       'String contains forbidden characters "[" or "]" or "Image Query". in the description'
+      //     );
+      //   }
+      // });
 
       setConsoleData((prev) => [
         ...prev,
