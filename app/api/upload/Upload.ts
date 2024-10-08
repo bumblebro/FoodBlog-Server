@@ -9,12 +9,16 @@ export default async function UPLOAD({
   subSection: string;
   subSubSection: string;
 }) {
+  // const apiKeys = [
+  //   "AIzaSyCXDKoQVeO41DjXic40S9ONZwF8oiMFTww",
+  //   "AIzaSyA2bW3jhFQMlSRZvRyXZCTLbYczeoJruzc",
+  //   "AIzaSyBwzqeVWzLPb-TjfbaqV5UIEBbN-xuF7Lg",
+  // ];
   const apiKeys = [
-    "AIzaSyCXDKoQVeO41DjXic40S9ONZwF8oiMFTww",
-    "AIzaSyA2bW3jhFQMlSRZvRyXZCTLbYczeoJruzc",
-    "AIzaSyBwzqeVWzLPb-TjfbaqV5UIEBbN-xuF7Lg",
+    "AIzaSyDZch7kYIjLE8YXGOUhJJJqXslEpSzXxlo",
+    "AIzaSyCV4EHy-ZSGlQuw-0vLPbO0iSt5gHIowQo",
+    "AIzaSyBiOTY_k_YBgugAxFkzsEtAQuvR3IWdGDU",
   ];
-
   // Generate a random index
   const randomIndex = Math.floor(Math.random() * apiKeys.length);
 
