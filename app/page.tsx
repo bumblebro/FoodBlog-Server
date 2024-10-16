@@ -6,6 +6,7 @@ function page() {
       <Link href={"/upload"}>Upload</Link>
       <Link href={"/upload2"}>Upload2</Link>
       <Link href={"/upload3"}>Upload3</Link>
+      <Link href={"/test"}>Test</Link>
     </div>
   );
 }

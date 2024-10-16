@@ -225,6 +225,11 @@ The response should be structured as a JSON array of objects with the following 
     //     }
     //   `;
 
+    // - Primary Keywords: Focus on high search volume and medium-to-high competition.
+    // - Secondary Keywords: Focus on moderate search volume and competition, with a related but distinct focus.
+    // "primaryKeywords": ["homemade pizza", "pizza recipe", "easy pizza dough"],
+    // "secondaryKeywords": ["Italian cuisine", "best pizza toppings", "how to make pizza at home"]
+
     const prompt = `
     Write content a well-researched, engaging, and structured blog post around 1500 to 2500 words for Food and Drink niche that avoids repetitive phrasing, formulaic structures, and predictable sentence patterns, which are often detectable by AI content tools. Instead, rewrite these unnatural elements by varying sentence structures and word choices in a way that mimics human writing styles. Ensure the text has a natural flow and maintains reader engagement throughout, just like human writers who enhance clarity and readability through diverse language use.
 
@@ -266,8 +271,9 @@ The algorithms you use should account for language nuances—syntax, semantics, 
     
     5. **SEO Information:**
        - Include meta description, Open Graph title and description, primary keywords, and secondary keywords.
-       - Primary Keywords: Focus on high search volume and medium-to-high competition.
-       - Secondary Keywords: Focus on moderate search volume and competition, with a related but distinct focus.
+       - Primary Keywords: Focus on specific, long-tail sentence keywords with medium-to-low search volume and competition, targeting a niche audience with clear intent.
+       - Secondary Keywords: Focus on long-tail sentence keywords with moderate search volume and competition, closely related to the primary keywords but providing additional specific information or targeting a complementary audience.
+
     
     Make sure the content is thoroughly researched and provides value to readers. Avoid filler content or placeholders, and focus on delivering substantial, fact-based information. Always use specific and relevant names, brands, or details related to the title provided.
 
@@ -282,8 +288,16 @@ The algorithms you use should account for language nuances—syntax, semantics, 
     "metaDescription": "Learn how to make a delicious homemade pizza from scratch with this easy-to-follow recipe.",
     "ogTitle": "How to Create the Perfect Homemade Pizza",
     "ogDescription": "Follow this step-by-step guide to make a perfect pizza at home, from kneading the dough to adding your favorite toppings.",
-    "primaryKeywords": ["homemade pizza", "pizza recipe", "easy pizza dough"],
-    "secondaryKeywords": ["Italian cuisine", "best pizza toppings", "how to make pizza at home"]
+   "primaryKeywords": [
+    "how to make the best homemade pizza from scratch",
+    "easy and quick pizza recipe for beginners at home",
+    "simple step-by-step guide to making easy pizza dough at home"
+  ],
+  "secondaryKeywords": [
+    "authentic Italian cuisine recipes for pizza and pasta lovers",
+    "top 10 best pizza toppings combinations for homemade pizza",
+    "ultimate guide on how to make pizza at home with minimal ingredients"
+  ]
   },
   "content": [
     {

@@ -8,6 +8,8 @@ import slugify from "slugify";
 import UPLOAD from "../api/upload/Upload";
 import HUMANIZE from "../api/humanize/Humanize";
 import { CONVERT } from "../api/humanizee/Convert";
+import { KEYWORD } from "../api/keyword/Keyword";
+import Delay from "@/libs/Delay";
 
 // Refreshes the current page
 function refreshPage() {
@@ -128,6 +130,17 @@ function Upload2() {
       setConsoleData((prev) => [...prev, `GETTING IMAGES FOR CONTENT...`]);
       console.log(`GETTING IMAGES FOR CONTENT...`);
 
+      let primaryKeywords = await KEYWORD(covertedBlog.seo.primaryKeywords[0]);
+      let secondaryKeywords = await KEYWORD(
+        covertedBlog.seo.secondaryKeywords[0]
+      );
+      console.log(primaryKeywords);
+      console.log(secondaryKeywords);
+      let newseo = { ...covertedBlog.seo, primaryKeywords, secondaryKeywords };
+      console.log(`oldseo`, covertedBlog.seo);
+
+      console.log(`newseo`, newseo);
+
       const results = await Promise.all(
         covertedBlog.content.map(
           async (item: {
@@ -234,7 +247,7 @@ function Upload2() {
         results,
         covertedBlog.author,
         covertedBlog.quote,
-        covertedBlog.seo)
+        newseo)
       ) {
         const res = await axios.post("/api/dbupload", {
           section: path[0],
@@ -246,7 +259,7 @@ function Upload2() {
           content: results,
           author: covertedBlog.author,
           quote: covertedBlog.quote,
-          seo: covertedBlog.seo,
+          seo: newseo,
           slug: `${path[0]}/${path[1]}/${path[2]}/${slugify(
             covertedBlog.pageTitle
           )}`,

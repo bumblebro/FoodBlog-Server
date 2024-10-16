@@ -8,6 +8,7 @@ import slugify from "slugify";
 import UPLOAD from "../api/upload/Upload";
 import HUMANIZE from "../api/humanize/Humanize";
 import { CONVERT } from "../api/humanizee/Convert";
+import { KEYWORD } from "../api/keyword/Keyword";
 
 interface blogs {
   blog: string;
@@ -87,7 +88,15 @@ function Upload() {
     const link = await searchImages(covertedBlog.imageQuery);
     setAuthor(covertedBlog.author);
     setQuote(covertedBlog.quote);
-    setSeo(covertedBlog.seo);
+    let primaryKeywords = await KEYWORD(covertedBlog.seo.primaryKeywords[0]);
+    let secondaryKeywords = await KEYWORD(
+      covertedBlog.seo.secondaryKeywords[0]
+    );
+    console.log(primaryKeywords);
+    console.log(secondaryKeywords);
+    setSeo({ ...covertedBlog.seo, primaryKeywords, secondaryKeywords });
+
+    // setSeo(covertedBlog.seo);
     setTitle(slugify(covertedBlog.pageTitle));
     setImageUrl(link);
     setImageAlt(covertedBlog.imageQuery);
