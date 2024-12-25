@@ -14,11 +14,7 @@ export default async function UPLOAD({
   //   "AIzaSyA2bW3jhFQMlSRZvRyXZCTLbYczeoJruzc",
   //   "AIzaSyBwzqeVWzLPb-TjfbaqV5UIEBbN-xuF7Lg",
   // ];
-  const apiKeys = [
-    "AIzaSyDZch7kYIjLE8YXGOUhJJJqXslEpSzXxlo",
-    "AIzaSyCV4EHy-ZSGlQuw-0vLPbO0iSt5gHIowQo",
-    "AIzaSyBiOTY_k_YBgugAxFkzsEtAQuvR3IWdGDU",
-  ];
+  const apiKeys = ["AIzaSyBo_--HVBGNxD3S8dtwbSMdkIVOXJN6om4"];
   // Generate a random index
   const randomIndex = Math.floor(Math.random() * apiKeys.length);
 
@@ -36,7 +32,7 @@ export default async function UPLOAD({
   };
   const formattedDate = today.toLocaleDateString("en-US", options);
 
-  console.log(formattedDate); // Output: "September 19, 2024"
+  console.log(formattedDate); // Output̀: "September 19, 2024"
 
   try {
     // const body = await req.json();
@@ -115,22 +111,17 @@ The titles must be:
   - Sub-subsection: ${subSubSection}
 
 Ensure that the titles:
+- Avoid word "ultimate".
 - Avoid any placeholders like "the product name" or "insert here," using meaningful and specific words related to the context of the sub-subsection.
 - Vary across different blog formats.
 - Are meaningful and relevant to the topic, avoiding repetition or generic placeholders.
 - Include a mix of popular and engaging title strategies (e.g., numbers, questions, controversial opinions, etc.).
 
-The response should be structured as a JSON array of objects with the following schema:
+The response should be structured as a JSON array of strings with the following schema:
 
 {
   "type": "array",
-  "items": {
-    "type": "object",
-    "properties": {
-      "title": { "type": "string", "nullable": false }
-    },
-    "required": ["title"]
-  }
+  "items": { "type": "string", "nullable": false }
 }
 `;
 
@@ -138,8 +129,18 @@ The response should be structured as a JSON array of objects with the following 
     const response = await res.response;
     const data = response.text();
     const titlelist = JSON.parse(data);
+
     // console.log(`Title list`, titlelist);
-    const title = await titlelist[Math.floor(Math.random() * 100) + 1].title;
+
+    const title = await titlelist[
+      Math.floor(Math.random() * titlelist.length) + 1
+    ];
+
+    console.log(`title picked :`, title);
+
+    // const title = await titlelist[
+    //   Math.floor(Math.random() * titlelist.length) + 1
+    // ].title;
 
     // const prompt = `
     //     Generate a well-researched, engaging, and structured blog post (around 1300 words) with the title "${title}". The blog should be written in a clear, informative, conversational, personal tone and style of storytelling. Ensure the content is:
@@ -231,12 +232,15 @@ The response should be structured as a JSON array of objects with the following 
     // "secondaryKeywords": ["Italian cuisine", "best pizza toppings", "how to make pizza at home"]
 
     const prompt = `
-    Write content a well-researched, engaging, and structured blog post around 1500 to 2500 words for Food and Drink niche that avoids repetitive phrasing, formulaic structures, and predictable sentence patterns, which are often detectable by AI content tools. Instead, rewrite these unnatural elements by varying sentence structures and word choices in a way that mimics human writing styles. Ensure the text has a natural flow and maintains reader engagement throughout, just like human writers who enhance clarity and readability through diverse language use.
+    Write content a well-researched, engaging, and structured one recipe blog post that contains description, ingredients, directions to cook and conclusion around 1500 to 2500 words for Food and Drink niche that avoids repetitive phrasing, formulaic structures, and predictable sentence patterns, which are often detectable by AI content tools. Instead, rewrite these unnatural elements by varying sentence structures and word choices in a way that mimics human writing styles. Ensure the text has a natural flow and maintains reader engagement throughout, just like human writers who enhance clarity and readability through diverse language use.
 
 Make sure the content replicates the engaging and natural qualities of human-authored text, ensuring it is indistinguishable from human writing. The final output should be precise, pass AI detection tools, and be enhanced for readability, flow, and engagement.
 
 The algorithms you use should account for language nuances—syntax, semantics, and context—making intelligent edits that humanize the AI-generated text without changing its original intent or meaning. Ensure that the output improves SEO performance and provides a positive reader experience, while also remaining completely undetectable by AI content detection algorithms with the title "${title}" updated as of ${formattedDate}. The blog should be written in a clear, informative, conversational, personal tone and style of storytelling. Ensure the content is:
 
+
+    - strictly one recipe.
+    - avoid word "ultimate".
     - Avoid complex words by using simple vocabulary like ‘find out’ instead of ‘ascertain’ or ‘use’ over ‘utilize’.
     - Make it less generic by adding a personal touch using opinions, real-life examples, etc. For instance, “One of my friends told me about their fun hiking experience in the mountains.”
     - Add emotional cues, words, and phrases. For example, “I know how difficult it can be to lose a loved one.”
@@ -271,8 +275,8 @@ The algorithms you use should account for language nuances—syntax, semantics, 
     
     5. **SEO Information:**
        - Include meta description, Open Graph title and description, primary keywords, and secondary keywords.
-       - Primary Keywords: Focus on specific, long-tail sentence keywords with medium-to-low search volume and competition, targeting a niche audience with clear intent.
-       - Secondary Keywords: Focus on long-tail sentence keywords with moderate search volume and competition, closely related to the primary keywords but providing additional specific information or targeting a complementary audience.
+       - Primary Keywords: one primary keyword which explains the title.
+       - Secondary Keywords: one secondary keyword which explains the title.
 
     
     Make sure the content is thoroughly researched and provides value to readers. Avoid filler content or placeholders, and focus on delivering substantial, fact-based information. Always use specific and relevant names, brands, or details related to the title provided.
@@ -289,14 +293,10 @@ The algorithms you use should account for language nuances—syntax, semantics, 
     "ogTitle": "How to Create the Perfect Homemade Pizza",
     "ogDescription": "Follow this step-by-step guide to make a perfect pizza at home, from kneading the dough to adding your favorite toppings.",
    "primaryKeywords": [
-    "how to make the best homemade pizza from scratch",
-    "easy and quick pizza recipe for beginners at home",
-    "simple step-by-step guide to making easy pizza dough at home"
+    "how to make the best homemade pizza from scratch"
   ],
   "secondaryKeywords": [
-    "authentic Italian cuisine recipes for pizza and pasta lovers",
-    "top 10 best pizza toppings combinations for homemade pizza",
-    "ultimate guide on how to make pizza at home with minimal ingredients"
+    "authentic Italian cuisine recipes for pizza and pasta lovers"
   ]
   },
   "content": [
@@ -448,6 +448,7 @@ The algorithms you use should account for language nuances—syntax, semantics, 
     console.log(title, section, subSection, subSubSection);
     return data1;
   } catch (error) {
+    console.log(`error message`, error);
     return error;
   }
 }
