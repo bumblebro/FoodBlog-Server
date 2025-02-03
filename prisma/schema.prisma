@@ -13,18 +13,37 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// model FoodBlogs {
+//   id        String   @id @default(uuid())
+//   author    String 
+//   title     String     @unique
+//   slug      String     @unique
+//   imageurl String
+//   imagealt String
+//   quote String  
+//   section  String  
+//   subsection  String
+//   subsubsection String 
+//   content Json[]
+//   seo Json
+//   creationDate DateTime @default(now())
+// }
+
 model FoodBlogs {
-  id        String   @id @default(uuid())
-  author    String 
-  title     String     @unique
-  slug      String     @unique
-  imageurl String
-  imagealt String
-  quote String  
-  section  String  
+  id                String   @id @default(uuid())
+  author            String   // Name of the author
+  quote             String   // Quote provided by the author
+  section           String  
   subsection  String
   subsubsection String 
-  content Json[]
-  seo Json
-  creationDate DateTime @default(now())
+  title         String   @unique // Title of the page
+  slug              String   @unique // URL-friendly slug for the blog
+  imageurl          String   // URL of the main image
+  imagealt          String   // Alt text for the main image
+  content           Json[]     // Short and detailed description of the recipe
+  instructions      String[]     // Step-by-step instructions for the recipe
+  recipedescription String
+  recipedetails     Json     // Recipe details for different serving sizes (1X, 2X, 3X, 4X)
+  seo               Json     // SEO-related information (meta description, keywords, etc.)
+  creationDate      DateTime @default(now()) // Date the blog was created
 }

@@ -2,14 +2,10 @@
 
 import { subSections } from "@/libs/Section";
 import axios from "axios";
-import { error } from "console";
 import { useEffect, useState } from "react";
 import slugify from "slugify";
 import UPLOAD from "../api/upload/Upload";
-import HUMANIZE from "../api/humanize/Humanize";
 import { CONVERT } from "../api/humanizee/Convert";
-import { KEYWORD } from "../api/keyword/Keyword";
-import Delay from "@/libs/Delay";
 
 // Refreshes the current page
 function refreshPage() {
@@ -48,6 +44,7 @@ function Upload2() {
 
   async function startProcess() {
     try {
+      // Getting random section
       setConsoleData([]);
       const path = await getRandomPath(subSections);
       console.log(`STARTED`);
@@ -66,6 +63,7 @@ function Upload2() {
         subSection: path[1],
         subSubSection: path[2],
       });
+
       // const data = await blogs.data;
       const covertedBlog = await JSON.parse(blogs);
       if (
@@ -78,7 +76,7 @@ function Upload2() {
         );
       }
 
-      covertedBlog.content.map((item: any) => {
+      covertedBlog.recipeDescription.detailedDescription.map((item: any) => {
         if (
           item.description.includes("[") ||
           item.description.includes("]") ||
@@ -130,85 +128,61 @@ function Upload2() {
       setConsoleData((prev) => [...prev, `GETTING IMAGES FOR CONTENT...`]);
       console.log(`GETTING IMAGES FOR CONTENT...`);
 
-      let primaryKeywords = await KEYWORD(covertedBlog.seo.primaryKeywords[0]);
-      let secondaryKeywords = await KEYWORD(
-        covertedBlog.seo.secondaryKeywords[0]
-      );
-      console.log(primaryKeywords);
-      console.log(secondaryKeywords);
-      let newseo = { ...covertedBlog.seo, primaryKeywords, secondaryKeywords };
+      // let primaryKeywords = await KEYWORD(covertedBlog.seo.primaryKeywords[0]);
+      // let secondaryKeywords = await KEYWORD(
+      //   covertedBlog.seo.secondaryKeywords[0]
+      // );
+      // console.log(primaryKeywords);
+      // console.log(secondaryKeywords);
+      // let newseo = { ...covertedBlog.seo, primaryKeywords, secondaryKeywords };
       console.log(`oldseo`, covertedBlog.seo);
 
-      console.log(`newseo`, newseo);
-
+      // console.log(`newseo`, newseo);
+      console.log(covertedBlog);
       const results = await Promise.all(
-        covertedBlog.content.map(
+        covertedBlog.recipeDescription.detailedDescription?.map(
           async (item: {
-            query: string;
+            imageQuery: string;
             // title: string;
             description: string;
           }) => {
             let link;
-            if (item.query == null || item.query == "null") {
+            if (item.imageQuery == null || item.imageQuery == "null") {
               link = "null";
             } else {
-              link = await searchImages(item.query);
+              link = await searchImages(item.imageQuery);
             }
             setConsoleData((prev) => [...prev, `IMAGE GENERATED, ${link}`]);
 
             console.log("IMAGE GENERATED", link);
 
-            // console.log(`desccccc`, item.description);
-            // let desc: any = await HUMANIZE(item.description);
-            // const newdesc = await JSON.parse(desc);
-
-            // console.log(newdesc);
-            // // const link = "hello";
-            // console.log("links", link);
-            // return {
-            //   // title: item.title,
-            //   description: newdesc,
-            //   // description: item.description,
-            //   url: link,
-            //   alt: item.query,
-            // };
-
+            // Function to retry humanizing content
             async function runUntilResponse(item: string) {
               let response = null;
               let count = 0;
               while (response === null) {
-                if (count == 4) {
+                if (count >= 4) {
                   throw new Error("Maximum limit reached for humanizing...");
                 }
-                response = await CONVERT(item); // Call the function
-
-                if (response !== null) {
-                  console.log("Got a non-null response:", response);
-                  // Process or return the non-null response
-                  return response;
+                response = await CONVERT(item); // Retry until success or max attempts
+                if (response === null) {
+                  count++;
+                  console.log("Response is null, retrying...");
+                  // await new Promise((resolve) => setTimeout(resolve, 1000)); // Optional delay
                 }
-                count++;
-                console.log("Response is null, trying again...");
-                // Optional: Add a delay between retries
-                // await new Promise((resolve) => setTimeout(resolve, 1000)); // 1-second delay
               }
+              console.log("Got a non-null response:", response);
+              return response;
             }
 
             const response = await runUntilResponse(item.description);
-
-            // const data = await response.json();
-            // if (response.ok) {
-            //   newdescription = data.humanizedContent;
-            // } else {
-            //   throw new Error("Humanise Content Failed");
-            // }
 
             return {
               // title: item.title,
               description: response,
               // description: item.description,
               url: link,
-              alt: item.query,
+              alt: item.imageQuery,
             };
           }
         )
@@ -239,7 +213,7 @@ function Upload2() {
 
       if (
         (path[0],
-        // covertedBlog.pageTitle,
+        covertedBlog.pageTitle,
         covertedBlog.imageQuery,
         link,
         path[1],
@@ -247,7 +221,10 @@ function Upload2() {
         results,
         covertedBlog.author,
         covertedBlog.quote,
-        newseo)
+        covertedBlog.seo,
+        covertedBlog.recipeDetails,
+        covertedBlog.instructions,
+        covertedBlog.recipeDescription.shortDescription)
       ) {
         const res = await axios.post("/api/dbupload", {
           section: path[0],
@@ -257,9 +234,12 @@ function Upload2() {
           subsection: path[1],
           subsubsection: path[2],
           content: results,
+          instructions: covertedBlog.instructions,
+          recipedetails: covertedBlog.recipeDetails,
+          recipedescription: covertedBlog.recipeDescription.shortDescription,
           author: covertedBlog.author,
           quote: covertedBlog.quote,
-          seo: newseo,
+          seo: covertedBlog.seo,
           slug: `${path[0]}/${path[1]}/${path[2]}/${slugify(
             covertedBlog.pageTitle
           )}`,
@@ -285,7 +265,7 @@ function Upload2() {
       }
     } catch (error) {
       setConsoleData((prev) => [...prev, `ERROR OCCURED, RETRYING...`]);
-      console.error("ERROR OCCURED, RETRYING...");
+      console.error("ERROR OCCURED, RETRYING...", error);
       setFailedCount((prev) => prev + 1);
       // console.clear(); // Clears the console
       startProcess(); // Handle errors and retry

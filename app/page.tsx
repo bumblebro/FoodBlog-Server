@@ -8,6 +8,7 @@ function page() {
       <Link href={"/upload3"}>Upload3</Link>
       <Link href={"/test"}>Test</Link>
       <Link href={"/imagetest"}>imagetest</Link>
+      <Link href={"/converttostring"}>comverttostring</Link>
     </div>
   );
 }

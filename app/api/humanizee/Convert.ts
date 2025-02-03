@@ -2,7 +2,7 @@
 
 import puppeteer from "puppeteer";
 import { setTimeout } from "node:timers/promises";
-import { NextRequest } from "next/server";
+import userAgent from "user-agents";
 
 export async function CONVERT(content: string) {
   // const { content } = await req.json();
@@ -29,9 +29,10 @@ export async function CONVERT(content: string) {
   // const browserWSEndpoint = await browser.wsEndpoint();
   try {
     const page = await browser.newPage();
-    await page.setUserAgent(
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
-    );
+    // await page.setUserAgent(
+    //   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
+    // );
+    await page.setUserAgent(userAgent.random().toString());
 
     await page.goto("https://www.undetectableai.pro", {
       waitUntil: "networkidle2",
@@ -95,7 +96,6 @@ export async function CONVERT(content: string) {
     return humanizedContent;
   } catch (error) {
     console.error("Scraping failed: ", error);
-    return "Scraping failed.";
-  } finally {
+    return null;
   }
 }
