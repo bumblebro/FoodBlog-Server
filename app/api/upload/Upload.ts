@@ -173,7 +173,7 @@ The structure of the blog should follow this format:
 4. **Recipe Description:**
    - Include the following fields:
      - **Short Description:** A concise summary of the recipe (1-2 sentences).
-     - **Detailed Description:** A detailed blog content of the recipe, broken into an array of strings (each string representing a paragraph or chunk of content).
+     - **Detailed Description:** A detailed blog content of the recipe, broken into an array of 2-3 strings (each string representing a paragraph or chunk of content).
 
 5. **Instructions:**  
    - ** Provide **extremely detailed, step-by-step instructions** Each step should be **actionable, clear, and granular**, ensuring that even a beginner can follow along without confusion. Include tips, visual cues (e.g., "the dough should look smooth and elastic"), and troubleshooting advice where applicable.
