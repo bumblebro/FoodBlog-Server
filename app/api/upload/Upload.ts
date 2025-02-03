@@ -78,20 +78,32 @@ export default async function UPLOAD({
     // }
     // `;
 
+    //     const promptForTitle = `
+    // Generate 100 unique, captivating, and non-repetitive click-bait recipe name for blog under the sub-subsection ${subSubSection}. This sub-subsection belongs to the subsection ${subSection} and the section ${section}. Ensure the recipes are updated and relevant as of ${formattedDate}.
+
+    // The recipes must be:
+    // - Creative and designed to make the reader want to click and try the recipe.
+    // - Clearly associated with the following topic hierarchy:
+    //   - Section: ${section}
+    //   - Subsection: ${subSection}
+    //   - Sub-subsection: ${subSubSection}
+
+    // Ensure that the titles:
+    // - Are meaningful and relevant to the recipe, avoiding repetition or generic phrases.
+
+    // `;
+
     const promptForTitle = `
-Generate 100 unique, captivating, and non-repetitive click-bait recipe name for blog under the sub-subsection ${subSubSection}. This sub-subsection belongs to the subsection ${subSection} and the section ${section}. Ensure the recipes are updated and relevant as of ${formattedDate}.
-
-The recipes must be:
-- Creative and designed to make the reader want to click and try the recipe.
-- Clearly associated with the following topic hierarchy:
-  - Section: ${section}
-  - Subsection: ${subSection}
-  - Sub-subsection: ${subSubSection}
-
-Ensure that the titles:
-- Are meaningful and relevant to the recipe, avoiding repetition or generic phrases.
-
-`;
+    Generate 100 unique, captivating, and non-repetitive recipe names for a blog under the sub-subsection "${subSubSection}". This sub-subsection belongs to the subsection "${subSection}" and the section "${section}". Ensure the recipes are updated and relevant as of ${formattedDate}.
+    
+    The recipe names must be:
+    - Clearly associated with the following topic hierarchy:
+      - Section: ${section}
+      - Subsection: ${subSection}
+      - Sub-subsection: ${subSubSection}
+    
+    Provide only the recipe names, one per line, without any numbers, bullet points, or additional text. Do not include any explanations, sentences, or notes. Only the recipe names.
+    `;
 
     const schema1 = {
       type: SchemaType.ARRAY,
