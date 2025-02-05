@@ -180,9 +180,9 @@ The structure of the blog should follow this format:
 
 5. **Recipe Details:**
    - Include the following fields:
-     - **Preparation Time:** Time required for preparation.
-     - **Cook Time:** Time required for cooking.
-     - **Total Time:** Total time required.
+     - **Preparation Time:** Time required for preparation in seconds.
+     - **Cook Time:** Time required for cooking in seconds.
+     - **Total Time:** Total time required in seconds.
      - **Yield:** Yield of the recipe (e.g., "4 servings").
      - **Ingredients:** List of ingredients with quantities for different serving sizes (1X, 2X, 3X, 4X).
      - **Notes:** Additional tips or notes for the recipe.
@@ -225,10 +225,10 @@ Make sure the content is thoroughly researched and provides value to readers. Av
       ],
   "recipeDetails": {
     "1X": {
-      "preparationTime": "15 minutes",
-      "cookTime": "30 minutes",
-      "totalTime": "45 minutes",
-      "yield": "4 servings",
+      "preparationTime": "450",
+      "cookTime": "1800",
+      "totalTime": "2700",
+      "yield": "4",
       "ingredients": [
         {
           "name": "Flour",
@@ -250,10 +250,10 @@ Make sure the content is thoroughly researched and provides value to readers. Av
       }
     },
     "2X": {
-      "preparationTime": "20 minutes",
-      "cookTime": "35 minutes",
-      "totalTime": "55 minutes",
-      "yield": "8 servings",
+      "preparationTime": "1200",
+      "cookTime": "2100",
+      "totalTime": "3300",
+      "yield": "8",
       "ingredients": [
         {
           "name": "Flour",
@@ -367,22 +367,22 @@ Make sure the content is thoroughly researched and provides value to readers. Av
               properties: {
                 preparationTime: {
                   type: SchemaType.STRING,
-                  description: "Time required for preparation",
+                  description: "Time required for preparation in seconds",
                   nullable: false,
                 },
                 cookTime: {
                   type: SchemaType.STRING,
-                  description: "Time required for cooking",
+                  description: "Time required for cooking in seconds",
                   nullable: false,
                 },
                 totalTime: {
                   type: SchemaType.STRING,
-                  description: "Total time required",
+                  description: "Total time required in seconds",
                   nullable: false,
                 },
                 yield: {
                   type: SchemaType.STRING,
-                  description: "Yield of the recipe (e.g., '4 servings')",
+                  description: "Yield of the recipe (e.g., '4')",
                   nullable: false,
                 },
                 ingredients: {
@@ -475,22 +475,22 @@ Make sure the content is thoroughly researched and provides value to readers. Av
               properties: {
                 preparationTime: {
                   type: SchemaType.STRING,
-                  description: "Time required for preparation",
+                  description: "Time required for preparation in seconds",
                   nullable: false,
                 },
                 cookTime: {
                   type: SchemaType.STRING,
-                  description: "Time required for cooking",
+                  description: "Time required for cooking in seconds",
                   nullable: false,
                 },
                 totalTime: {
                   type: SchemaType.STRING,
-                  description: "Total time required",
+                  description: "Total time required in seconds",
                   nullable: false,
                 },
                 yield: {
                   type: SchemaType.STRING,
-                  description: "Yield of the recipe (e.g., '8 servings')",
+                  description: "Yield of the recipe (e.g., '8')",
                   nullable: false,
                 },
                 ingredients: {
@@ -583,22 +583,22 @@ Make sure the content is thoroughly researched and provides value to readers. Av
               properties: {
                 preparationTime: {
                   type: SchemaType.STRING,
-                  description: "Time required for preparation",
+                  description: "Time required for preparation in seconds",
                   nullable: false,
                 },
                 cookTime: {
                   type: SchemaType.STRING,
-                  description: "Time required for cooking",
+                  description: "Time required for cooking in seconds",
                   nullable: false,
                 },
                 totalTime: {
                   type: SchemaType.STRING,
-                  description: "Total time required",
+                  description: "Total time required in seconds",
                   nullable: false,
                 },
                 yield: {
                   type: SchemaType.STRING,
-                  description: "Yield of the recipe (e.g., '12 servings')",
+                  description: "Yield of the recipe (e.g., '12')",
                   nullable: false,
                 },
                 ingredients: {
@@ -691,22 +691,22 @@ Make sure the content is thoroughly researched and provides value to readers. Av
               properties: {
                 preparationTime: {
                   type: SchemaType.STRING,
-                  description: "Time required for preparation",
+                  description: "Time required for preparation in seconds",
                   nullable: false,
                 },
                 cookTime: {
                   type: SchemaType.STRING,
-                  description: "Time required for cooking",
+                  description: "Time required for cooking in seconds",
                   nullable: false,
                 },
                 totalTime: {
                   type: SchemaType.STRING,
-                  description: "Total time required",
+                  description: "Total time required in seconds",
                   nullable: false,
                 },
                 yield: {
                   type: SchemaType.STRING,
-                  description: "Yield of the recipe (e.g., '16 servings')",
+                  description: "Yield of the recipe (e.g., '16')",
                   nullable: false,
                 },
                 ingredients: {
