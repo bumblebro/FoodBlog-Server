@@ -183,7 +183,7 @@ The structure of the blog should follow this format:
      - **Preparation Time:** Time required for preparation in seconds.
      - **Cook Time:** Time required for cooking in seconds.
      - **Total Time:** Total time required in seconds.
-     - **Yield:** Yield of the recipe (e.g., "4 servings").
+     - **Yield:** Yield of the recipe (e.g., "4").
      - **Ingredients:** List of ingredients with quantities for different serving sizes (1X, 2X, 3X, 4X).
      - **Notes:** Additional tips or notes for the recipe.
      - **Nutrition:** Nutritional information per serving.
