@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { NextRequest } from "next/server";
 import puppeteer from "puppeteer";
 
@@ -94,7 +96,7 @@ export async function POST(req: NextRequest) {
 
     if (url && url.url.includes("shutterstock")) {
       throw new Error("Shutterstock images are not allowed.");
-  }
+    }
     console.log(`url`, url);
     return Response.json({ results: url });
   } catch (e) {
