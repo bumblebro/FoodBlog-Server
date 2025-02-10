@@ -44,7 +44,7 @@ async function fetchImageUrls(searchTerm) {
 
     // Navigate to Google Image Search
     const searchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(
-      searchTerm
+      searchTerm + "Unspash" + "Freepik" + "Pixabay" + "Pexels"
     )}`;
     await page.goto(searchUrl, { waitUntil: "networkidle2" });
 
@@ -75,7 +75,6 @@ async function fetchImageUrls(searchTerm) {
       await browser.close(); // Ensure browser is properly closed
       console.log("Browser closed");
     }
-
     return results;
   } catch (error) {
     console.error("Error fetching image URLs:", error);
@@ -92,6 +91,10 @@ export async function POST(req: NextRequest) {
     // console.log(results.slice(0, 10));
 
     const url = results.find((item) => item.url.startsWith("https:"));
+
+    if (url && url.url.includes("shutterstock")) {
+      throw new Error("Shutterstock images are not allowed.");
+  }
     console.log(`url`, url);
     return Response.json({ results: url });
   } catch (e) {

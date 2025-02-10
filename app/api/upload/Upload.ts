@@ -137,7 +137,7 @@ export default async function UPLOAD({
 
     if (title.toLowerCase().includes("updated")) {
       throw new Error("Title cannot contain the word 'updated'.");
-  }
+    }
 
     const prompt = `Write a well-researched, engaging, and structured recipe blog post that contains a description, ingredients, directions to cook, and a conclusion, around 1500 to 2500 words, for the Food and Drink niche. The content should avoid repetitive phrasing, formulaic structures, and predictable sentence patterns, which are often detectable by AI content tools. Instead, rewrite these unnatural elements by varying sentence structures and word choices in a way that mimics human writing styles. Ensure the text has a natural flow and maintains reader engagement throughout, just like human writers who enhance clarity and readability through diverse language use.
 
@@ -185,7 +185,7 @@ The structure of the blog should follow this format:
 6. **Recipe Description:**
    - Include the following fields:
      - **Short Description:** A concise summary of the recipe (1-2 sentences).
-     - **Detailed Description:** A detailed blog content of the recipe, broken into an array of 2-3 strings (each string representing a paragraph or chunk of content).
+     - **Detailed Description:** A detailed blog content of the recipe and image queries, broken into an array of 2-3 strings (each string representing a paragraph or chunk of content).
 
 7. **Instructions:**  
    - ** Provide **extremely detailed, step-by-step instructions** Each step should be **actionable, clear, and granular**, ensuring that even a beginner can follow along without confusion. Include tips, visual cues (e.g., "the dough should look smooth and elastic"), and troubleshooting advice where applicable.
@@ -240,9 +240,16 @@ Make sure the content is thoroughly researched and provides value to readers. Av
   "recipeDescription": {
     "shortDescription": "There’s something magical about making pizza from scratch. The smell of fresh dough rising, the sound of sizzling toppings, and the joy of pulling a golden, cheesy masterpiece out of the oven—it’s an experience that brings people together.",
     "detailedDescription": [
-      "Whether you're cooking for a family dinner or hosting a pizza night with friends, this recipe will guide you step-by-step to create the perfect homemade pizza. The process begins with preparing the dough, which is surprisingly simple and requires just a few basic ingredients.",
-      "Once the dough is ready, the fun part begins—adding your favorite toppings! From classic margherita to adventurous combinations like BBQ chicken or pesto and goat cheese, the possibilities are endless. The key is to balance flavors and textures to create a pizza that’s uniquely yours.",
-      "Baking the pizza is the final step, and it’s where the magic happens. As the cheese melts and the crust turns golden brown, your kitchen will fill with the irresistible aroma of freshly baked pizza. It’s a moment that’s sure to bring everyone to the table, eager to dig in."
+     {
+      imageQuery: "Close-up shot of a bowl of chickpea curry with rice",
+      description:
+         "Whether you're cooking for a family dinner or hosting a pizza night with friends, this recipe will guide you step-by-step to create the perfect homemade pizza. The process begins with preparing the dough, which is surprisingly simple and requires just a few basic ingredients.",
+    },
+    {
+      imageQuery: "A person serving a bowl of chickpea curry",
+      description:
+        "Once the dough is ready, the fun part begins—adding your favorite toppings! From classic margherita to adventurous combinations like BBQ chicken or pesto and goat cheese, the possibilities are endless. The key is to balance flavors and textures to create a pizza that’s uniquely yours."
+    }
     ]
   },
   "instructions": [
