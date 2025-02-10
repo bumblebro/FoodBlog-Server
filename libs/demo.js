@@ -1,499 +1,449 @@
 const demo = {
-  id: "7872c206-4afc-471f-b0e3-e72037632bd7",
-  author: "Billy Bob Thornton",
+  id: "2b0f8f3d-f880-49b9-90c0-6f7c59cea228",
+  author: "Maya Rodriguez",
   quote:
-    "The only time I ever get good results from cooking something slow is when I'm making pulled pork!",
-  section: "Recipe-Formats",
-  subsection: "Slow-Cooker",
-  subsubsection: "Pulled-Pork",
-  title: "Slow-Cooker-Pulled-Pork-with-Gochujang-Glaze",
-  slug: "Recipe-Formats/Slow-Cooker/Pulled-Pork/Slow-Cooker-Pulled-Pork-with-Gochujang-Glaze",
+    "The joy of cooking lies not just in the finished dish, but in the journey of creating it.",
+  section: "Dietary-Preferences",
+  subsection: "Vegetarian",
+  subsubsection: "Chickpea-Curry",
+  title: "Chickpea-Curry-with-Coconut-Milk-and-Spinach",
+  slug: "Dietary-Preferences/Vegetarian/Chickpea-Curry/Chickpea-Curry-with-Coconut-Milk-and-Spinach",
   imageurl:
-    "https://thesubversivetable.com/wp-content/uploads/2019/11/snapseed-1-768x1024.jpg",
-  imagealt:
-    "Close-up shot of slow cooker pulled pork with gochujang glaze, glistening and tender",
+    "https://rainbowplantlife.com/wp-content/uploads/2023/02/Hero_01_Chickpea-Curry.jpg",
+  imagealt: "vibrant chickpea curry with coconut milk and spinach in a pot",
   content: [
     {
-      alt: "A family enjoying slow cooker pulled pork",
-      url: "https://krollskorner.com/wp-content/uploads/2024/01/Slow-Cooker-Pulled-Pork_LowRes-012.jpg",
+      alt: "Close-up shot of a bowl of chickpea curry with rice",
+      url: "https://img.freepik.com/premium-psd/closeup-bowl-white-rice-topped-with-chickpea-tomato-curry_1184029-12224.jpg?w=360",
       description:
-        "This is my go-to recipe for any crowd-pleasing meal. It's a lot of flavors, not that hard to put together, and the slow cooker does all the work. Perfect for a casual get-together or family dinner. And leftovers are absolutely amazing—trust me, I know.",
+        "This chickpea curry is my go-to comfort food: creamy, flavorful, and full of protein and veggies. I was going to make something complicated, but this was so much better. One of the beautiful things about this recipe is that it's very simple. With just a few pantry staples and some fresh ingredients, you will create a curry that is satisfying and delicious. It's great for a weeknight dinner or a weekend gathering.  I make this all the time! ",
     },
     {
-      alt: "Gochujang paste in a bowl",
-      url: "https://minimalistbaker.com/wp-content/uploads/2018/02/Gochujang-SQUARE.jpg",
+      alt: "A person serving a bowl of chickpea curry",
+      url: "https://ourbalancedbowl.com/wp-content/uploads/2020/03/IMG_6494-scaled.jpg",
       description:
-        "I first had gochujang a couple of years back when traveling through Seoul. Man, that sweet-spicy kick really hit me! Nowadays, I use it for everything—from stir-fries to marinades. That little glaze can just deepen flavors to really fit the pork with its richness perfectly.",
+        "I first made this curry many years ago when a friend was over. She told me about a hike, and I simply needed something warm and comforting! I modified the recipe according to her request to have a hint of sweetness, it turned out so much better.",
     },
   ],
   instructions: [
-    "First things first, you gotta get that pork shoulder.  About a 3-4 pounder will do the trick.  Pat it dry with paper towels – this helps it get nice and crispy later. Don't skip this step; trust me!",
-    "Now, for the rub. In a small bowl, combine 2 tablespoons brown sugar, 1 tablespoon paprika, 1 tablespoon garlic powder, 1 tablespoon onion powder, 1 tablespoon salt, and 1 teaspoon black pepper. Give it a good stir.  Seriously, mix it well. You want an even coating.",
-    "Rub that glorious mixture all over the pork shoulder.  Make sure you get into all the nooks and crannies.  It's like giving the pork a spa day, only way better.  It's going to taste amazing.",
-    "Next up, you need to prepare your slow cooker.  Spray it with cooking spray – trust me on this one too!  This will prevent sticking, and you don’t want that lovely pork sticking to anything.",
-    "Place the rubbed pork shoulder in the slow cooker.  It's a snug fit, right?  Good.  We're slow cooking this beauty for about 6-8 hours on low or 3-4 hours on high.   I usually go with low and slow, let that flavor really develop. You could go for high if you're short on time though.",
-    "While the pork is doing its thing (and oh, the things it’ll be doing!), let’s get started on that gochujang glaze.  In a separate bowl, whisk together 1/4 cup gochujang (Korean chili paste), 2 tablespoons soy sauce, 2 tablespoons rice vinegar, 1 tablespoon honey, and 1 teaspoon sesame oil.  Adjust to taste!  Sometimes I add a little more honey for extra sweetness.",
-    "Once the pork is cooked through, it should be so tender that it practically falls apart.  Use two forks to shred it.  Like, really shred it.  We’re talking about tiny little strands of porky heaven. ",
-    "Now comes the fun part! Pour that gochujang glaze over the shredded pork. Gently toss to coat every strand.  Make sure it's all nice and saucy – and don’t be shy with that glaze.",
-    "Serve it up on some buns with coleslaw, kimchi, or whatever your heart desires.  Get creative with it! You can even make some amazing fries to go along with it!   I like to serve it with a side of some roasted vegetables.",
-    "And there you have it!  Slow Cooker Pulled Pork with Gochujang Glaze.  It’s finger-lickin’ good, and it’s so easy, you can even get your little brother to help (maybe not though). It’s amazing! Enjoy!",
+    "First, prepare the aromatics. Finely chop one medium onion, two cloves of garlic, and one inch of ginger.  Don't be afraid to really mince that garlic - the more the merrier, I say!",
+    "Heat two tablespoons of coconut oil in a large pot or Dutch oven over medium heat. Once the oil is hot, add the chopped onion and cook until softened, about 5 minutes. Stir frequently to prevent burning.  This is super important - nobody likes burnt onions!",
+    "Next, add the minced garlic and ginger to the pot.  Cook for another minute, until fragrant. Stir constantly to prevent burning!",
+    "Now it's time for the spices! Add one tablespoon of curry powder, one teaspoon of turmeric, one-half teaspoon of cumin, one-half teaspoon of coriander, and a pinch of cayenne pepper (optional, for heat). Cook for another minute, stirring constantly, until fragrant.  This step releases the amazing aromas of the spices!",
+    "Add 1 (14.5-ounce) can of diced tomatoes, undrained,  one (15-ounce) can of chickpeas, rinsed and drained, and 4 cups of vegetable broth to the pot. Bring the mixture to a boil, then reduce heat to low, cover, and simmer for 20 minutes. Let the flavors meld, it makes all the difference in the world!",
+    "After 20 minutes, stir in 1 (13.5-ounce) can of full-fat coconut milk and 5 ounces of fresh spinach. Continue to simmer until the spinach has wilted, about 5 minutes. Stir occasionally.  Don't overcook the spinach, or it'll get mushy!",
+    "Taste and adjust seasonings.  Add more salt, pepper, or any other spices to your liking. Remember, cooking is all about personal preferences!",
+    "Serve hot. Garnish with fresh cilantro (optional), a squeeze of lime, and a dollop of plain yogurt or coconut cream (optional). This part is purely for show, but the show looks amazing!",
   ],
+  recipedescription:
+    "A creamy and flavorful chickpea curry made with coconut milk and spinach. This recipe is easy to follow and perfect for a weeknight dinner.",
   recipedetails: {
     "1X": {
-      notes: [
-        "For extra flavor, add a splash of apple cider vinegar to the glaze.",
-        "Feel free to adjust the amount of gochujang depending on your spice preference.",
-        "Leftovers can be stored in the refrigerator for up to 3 days.",
+      yield: "4",
+      cookTime: "1200",
+      nutrition: {
+        fat: "15g",
+        fiber: "10g",
+        calcium: "80mg",
+        protein: "15g",
+        calories: "350kcal",
+        carbohydrates: "45g",
+      },
+      totalTime: "1800",
+      ingredients: [
+        {
+          name: "Coconut oil",
+          quantity: "2 tablespoons",
+        },
+        {
+          name: "Onion",
+          quantity: "1 medium",
+        },
+        {
+          name: "Garlic",
+          quantity: "2 cloves",
+        },
+        {
+          name: "Ginger",
+          quantity: "1 inch",
+        },
+        {
+          name: "Curry powder",
+          quantity: "1 tablespoon",
+        },
+        {
+          name: "Turmeric",
+          quantity: "1 teaspoon",
+        },
+        {
+          name: "Cumin",
+          quantity: "1/2 teaspoon",
+        },
+        {
+          name: "Coriander",
+          quantity: "1/2 teaspoon",
+        },
+        {
+          name: "Cayenne pepper",
+          quantity: "pinch (optional)",
+        },
+        {
+          name: "Diced tomatoes",
+          quantity: "1 (14.5-ounce) can",
+        },
+        {
+          name: "Chickpeas",
+          quantity: "1 (15-ounce) can",
+        },
+        {
+          name: "Vegetable broth",
+          quantity: "4 cups",
+        },
+        {
+          name: "Coconut milk",
+          quantity: "1 (13.5-ounce) can",
+        },
+        {
+          name: "Spinach",
+          quantity: "5 ounces",
+        },
+        {
+          name: "Salt and pepper",
+          quantity: "to taste",
+        },
+        {
+          name: "Cilantro",
+          quantity: "fresh, optional",
+        },
+        {
+          name: "Lime",
+          quantity: "optional",
+        },
+        {
+          name: "Yogurt or coconut cream",
+          quantity: "optional",
+        },
       ],
-      yield: "4 servings",
-      cookTime: "6-8 hours on low or 3-4 hours on high",
+      preparationTime: "600",
+    },
+    "2X": {
+      yield: "8",
+      cookTime: "1500",
       nutrition: {
         fat: "30g",
-        fiber: "5g",
-        calcium: "50mg",
-        protein: "40g",
-        calories: "500kcal",
-        carbohydrates: "30g",
-      },
-      totalTime: "6 hours 15 minutes",
-      ingredients: [
-        {
-          name: "Pork shoulder",
-          quantity: "3-4 pounds",
-        },
-        {
-          name: "Brown sugar",
-          quantity: "2 tablespoons",
-        },
-        {
-          name: "Paprika",
-          quantity: "1 tablespoon",
-        },
-        {
-          name: "Garlic powder",
-          quantity: "1 tablespoon",
-        },
-        {
-          name: "Onion powder",
-          quantity: "1 tablespoon",
-        },
-        {
-          name: "Salt",
-          quantity: "1 tablespoon",
-        },
-        {
-          name: "Black pepper",
-          quantity: "1 teaspoon",
-        },
-        {
-          name: "Gochujang",
-          quantity: "1/4 cup",
-        },
-        {
-          name: "Soy sauce",
-          quantity: "2 tablespoons",
-        },
-        {
-          name: "Rice vinegar",
-          quantity: "2 tablespoons",
-        },
-        {
-          name: "Honey",
-          quantity: "1 tablespoon",
-        },
-        {
-          name: "Sesame oil",
-          quantity: "1 teaspoon",
-        },
-      ],
-      preparationTime: "15 minutes",
-    },
-    "2X": {
-      notes: [
-        "For extra flavor, add a splash of apple cider vinegar to the glaze.",
-        "Feel free to adjust the amount of gochujang depending on your spice preference.",
-        "Leftovers can be stored in the refrigerator for up to 3 days.",
-      ],
-      yield: "8 servings",
-      cookTime: "8-10 hours on low or 4-5 hours on high",
-      nutrition: {
-        fat: "60g",
-        fiber: "10g",
-        calcium: "100mg",
-        protein: "80g",
-        calories: "1000kcal",
-        carbohydrates: "60g",
-      },
-      totalTime: "8 hours 20 minutes",
-      ingredients: [
-        {
-          name: "Pork shoulder",
-          quantity: "6-8 pounds",
-        },
-        {
-          name: "Brown sugar",
-          quantity: "4 tablespoons",
-        },
-        {
-          name: "Paprika",
-          quantity: "2 tablespoons",
-        },
-        {
-          name: "Garlic powder",
-          quantity: "2 tablespoons",
-        },
-        {
-          name: "Onion powder",
-          quantity: "2 tablespoons",
-        },
-        {
-          name: "Salt",
-          quantity: "2 tablespoons",
-        },
-        {
-          name: "Black pepper",
-          quantity: "2 teaspoons",
-        },
-        {
-          name: "Gochujang",
-          quantity: "1/2 cup",
-        },
-        {
-          name: "Soy sauce",
-          quantity: "4 tablespoons",
-        },
-        {
-          name: "Rice vinegar",
-          quantity: "4 tablespoons",
-        },
-        {
-          name: "Honey",
-          quantity: "2 tablespoons",
-        },
-        {
-          name: "Sesame oil",
-          quantity: "2 teaspoons",
-        },
-      ],
-      preparationTime: "20 minutes",
-    },
-    "3X": {
-      notes: [
-        "For extra flavor, add a splash of apple cider vinegar to the glaze.",
-        "Feel free to adjust the amount of gochujang depending on your spice preference.",
-        "Leftovers can be stored in the refrigerator for up to 3 days.",
-      ],
-      yield: "12 servings",
-      cookTime: "10-12 hours on low or 5-6 hours on high",
-      nutrition: {
-        fat: "90g",
-        fiber: "15g",
-        calcium: "150mg",
-        protein: "120g",
-        calories: "1500kcal",
+        fiber: "20g",
+        calcium: "160mg",
+        protein: "30g",
+        calories: "700kcal",
         carbohydrates: "90g",
       },
-      totalTime: "10 hours 25 minutes",
+      totalTime: "2400",
       ingredients: [
         {
-          name: "Pork shoulder",
-          quantity: "9-12 pounds",
-        },
-        {
-          name: "Brown sugar",
-          quantity: "6 tablespoons",
-        },
-        {
-          name: "Paprika",
-          quantity: "3 tablespoons",
-        },
-        {
-          name: "Garlic powder",
-          quantity: "3 tablespoons",
-        },
-        {
-          name: "Onion powder",
-          quantity: "3 tablespoons",
-        },
-        {
-          name: "Salt",
-          quantity: "3 tablespoons",
-        },
-        {
-          name: "Black pepper",
-          quantity: "3 teaspoons",
-        },
-        {
-          name: "Gochujang",
-          quantity: "3/4 cup",
-        },
-        {
-          name: "Soy sauce",
-          quantity: "6 tablespoons",
-        },
-        {
-          name: "Rice vinegar",
-          quantity: "6 tablespoons",
-        },
-        {
-          name: "Honey",
-          quantity: "3 tablespoons",
-        },
-        {
-          name: "Sesame oil",
-          quantity: "3 teaspoons",
-        },
-      ],
-      preparationTime: "25 minutes",
-    },
-    "4X": {
-      notes: [
-        "For extra flavor, add a splash of apple cider vinegar to the glaze.",
-        "Feel free to adjust the amount of gochujang depending on your spice preference.",
-        "Leftovers can be stored in the refrigerator for up to 3 days.",
-      ],
-      yield: "16 servings",
-      cookTime: "12-14 hours on low or 6-7 hours on high",
-      nutrition: {
-        fat: "120g",
-        fiber: "20g",
-        calcium: "200mg",
-        protein: "160g",
-        calories: "2000kcal",
-        carbohydrates: "120g",
-      },
-      totalTime: "12 hours 30 minutes",
-      ingredients: [
-        {
-          name: "Pork shoulder",
-          quantity: "12-16 pounds",
-        },
-        {
-          name: "Brown sugar",
-          quantity: "8 tablespoons",
-        },
-        {
-          name: "Paprika",
+          name: "Coconut oil",
           quantity: "4 tablespoons",
         },
         {
-          name: "Garlic powder",
-          quantity: "4 tablespoons",
+          name: "Onion",
+          quantity: "2 medium",
         },
         {
-          name: "Onion powder",
-          quantity: "4 tablespoons",
+          name: "Garlic",
+          quantity: "4 cloves",
         },
         {
-          name: "Salt",
-          quantity: "4 tablespoons",
+          name: "Ginger",
+          quantity: "2 inches",
         },
         {
-          name: "Black pepper",
-          quantity: "4 teaspoons",
+          name: "Curry powder",
+          quantity: "2 tablespoons",
         },
         {
-          name: "Gochujang",
-          quantity: "1 cup",
+          name: "Turmeric",
+          quantity: "2 teaspoons",
         },
         {
-          name: "Soy sauce",
-          quantity: "8 tablespoons",
+          name: "Cumin",
+          quantity: "1 teaspoon",
         },
         {
-          name: "Rice vinegar",
-          quantity: "8 tablespoons",
+          name: "Coriander",
+          quantity: "1 teaspoon",
         },
         {
-          name: "Honey",
-          quantity: "4 tablespoons",
+          name: "Cayenne pepper",
+          quantity: "1/4 teaspoon (optional)",
         },
         {
-          name: "Sesame oil",
-          quantity: "4 teaspoons",
+          name: "Diced tomatoes",
+          quantity: "2 (14.5-ounce) cans",
+        },
+        {
+          name: "Chickpeas",
+          quantity: "2 (15-ounce) cans",
+        },
+        {
+          name: "Vegetable broth",
+          quantity: "8 cups",
+        },
+        {
+          name: "Coconut milk",
+          quantity: "2 (13.5-ounce) cans",
+        },
+        {
+          name: "Spinach",
+          quantity: "10 ounces",
+        },
+        {
+          name: "Salt and pepper",
+          quantity: "to taste",
+        },
+        {
+          name: "Cilantro",
+          quantity: "fresh, optional",
+        },
+        {
+          name: "Lime",
+          quantity: "optional",
+        },
+        {
+          name: "Yogurt or coconut cream",
+          quantity: "optional",
         },
       ],
-      preparationTime: "30 minutes",
-    },
-  },
-  seo: {
-    ogTitle: "Slow Cooker Pulled Pork with Gochujang Glaze",
-    ogDescription:
-      "Slow-cooked to perfection, this recipe delivers juicy pulled pork infused with the unique flavors of gochujang. Easy and delicious!",
-    metaDescription:
-      "Fall-apart tender pulled pork with a delicious sweet and spicy Korean-inspired gochujang glaze.  Perfect for parties or a cozy night in!",
-    primaryKeywords: ["slow cooker pulled pork gochujang glaze"],
-    secondaryKeywords: [
-      "pulled pork recipe",
-      "gochujang recipe",
-      "slow cooker recipes",
-      "korean bbq",
-      "easy pulled pork",
-      "delicious pulled pork",
-      "weekend meal ideas",
-      "family dinner",
-      "comfort food",
-      "spicy pulled pork",
-    ],
-  },
-  creationDate: "2025-02-01T19:35:19.812Z",
-};
-
-const newdemo = {
-  author: "Willow Creek",
-  imageQuery: "vibrant green pumpkin seed smoothie in a glass",
-  instructions: [
-    "First things first, gather your ingredients!  Make sure your pumpkin seeds are roasted – this adds a depth of flavor you won't believe. I usually roast mine at 350°F (175°C) for about 10-12 minutes, or until they're golden and fragrant. Let them cool completely before using.  Don't skip this step; it makes ALL the difference!",
-    "Next, prep your greens! I like to use spinach – it's mild and blends easily. Wash a good handful thoroughly. You could also use kale, but maybe add a little extra liquid if it's particularly tough. I learned that the hard way... once.",
-    "Now for the banana! I always use frozen bananas. They create a wonderfully thick and creamy smoothie without the need for ice, which can sometimes dilute the flavor. Plus, they're already cold, so you don't have to wait for ice to chill things down.  Peel and slice before freezing for best results.",
-    "Time to blend! Throw everything – the roasted pumpkin seeds, spinach, banana slices, almond milk (or your milk of choice!), and a splash of maple syrup – into your blender.  Start on a low speed, then gradually increase to high. Blend until completely smooth and creamy.  If it's too thick, add a little more almond milk; if it's too thin, add a frozen banana slice or two.  You're aiming for a perfect, pourable consistency.",
-    "Give it a taste test!  Adjust the sweetness and/or milk to your liking. A tiny pinch of salt can sometimes enhance the flavors, too, believe it or not!  Don't be afraid to experiment – that's half the fun of making smoothies!",
-    "Pour into a glass and enjoy! Garnish with a few extra pumpkin seeds for added crunch and visual appeal. It looks so pretty, and the extra seeds provide that extra little nutty boost.  I often add a sprinkle of cinnamon, too.  A perfect way to start the day, or a tasty afternoon pick-me-up!",
-  ],
-  pageTitle: "Pumpkin Seed Smoothie: Flavorful and Nutritious!",
-  quote: "Food is symbolic of love when words are inadequate.",
-  recipeDescription: {
-    detailedDescription: [
-      {
-        description:
-          "This pumpkin seed smoothie isn't just a drink; it's a delightful experience! Imagine the creamy texture, the subtle sweetness of the banana, the earthy notes of pumpkin seeds, and the vibrant green hue of spinach all blending together in perfect harmony. It's a nutrient powerhouse packed with healthy fats, protein, and fiber—a delicious way to kickstart your day or refuel after a workout.",
-        imageQuery:
-          "Close-up shot of a glass of pumpkin seed smoothie with pumpkin seeds and a sprig of mint as garnish",
-      },
-      {
-        description:
-          "What makes this smoothie so special?  It's the perfectly balanced combination of ingredients. The pumpkin seeds add a unique nutty flavor and a satisfying crunch (especially if you add a few extra on top!).  Spinach provides a boost of vitamins and minerals without overpowering the other flavors. The banana contributes natural sweetness and creaminess, while the almond milk ensures a smooth, velvety texture. It's a symphony of flavors and textures that dance on your palate.",
-        imageQuery:
-          "Person enjoying a glass of pumpkin seed smoothie outdoors on a sunny day",
-      },
-    ],
-    shortDescription:
-      "This vibrant green smoothie is not only delicious but also packed with nutrients! Pumpkin seeds, spinach, banana, and almond milk create a creamy and flavorful treat that's perfect for any time of day.",
-  },
-  recipeDetails: {
-    "1X": {
-      cookTime: "0 minutes",
-      ingredients: [
-        { name: "Roasted Pumpkin Seeds", quantity: "1/4 cup" },
-        { name: "Fresh Spinach", quantity: "1 cup, packed" },
-        { name: "Frozen Banana Slices", quantity: "1 medium" },
-        { name: "Almond Milk (or other milk)", quantity: "1/2 cup" },
-        { name: "Maple Syrup", quantity: "1 tablespoon (or to taste)" },
-      ],
-      nutrition: {
-        calcium: "30 mg",
-        calories: "250 kcal",
-        carbohydrates: "30 g",
-        fat: "12 g",
-        fiber: "5 g",
-        protein: "8 g",
-      },
-      preparationTime: "5 minutes",
-      totalTime: "5 minutes",
-      yield: "1 serving",
-      notes: [
-        "Adjust sweetness to your preference.  If your pumpkin seeds are salty, you might need less maple syrup.",
-        "Feel free to experiment with other greens, such as kale.  You might want a little more liquid if using kale.",
-        "For a thicker smoothie, use more frozen banana slices. For a thinner smoothie, use more almond milk.",
-      ],
-    },
-    "2X": {
-      cookTime: "0 minutes",
-      ingredients: [
-        { name: "Roasted Pumpkin Seeds", quantity: "1/2 cup" },
-        { name: "Fresh Spinach", quantity: "2 cups, packed" },
-        { name: "Frozen Banana Slices", quantity: "2 medium" },
-        { name: "Almond Milk (or other milk)", quantity: "1 cup" },
-        { name: "Maple Syrup", quantity: "2 tablespoons (or to taste)" },
-      ],
-      nutrition: {
-        calcium: "60 mg",
-        calories: "500 kcal",
-        carbohydrates: "60 g",
-        fat: "24 g",
-        fiber: "10 g",
-        protein: "16 g",
-      },
-      preparationTime: "10 minutes",
-      totalTime: "10 minutes",
-      yield: "2 servings",
-      notes: [
-        "Adjust sweetness to your preference.  If your pumpkin seeds are salty, you might need less maple syrup.",
-        "Feel free to experiment with other greens, such as kale.  You might want a little more liquid if using kale.",
-        "For a thicker smoothie, use more frozen banana slices. For a thinner smoothie, use more almond milk.",
-      ],
+      preparationTime: "900",
     },
     "3X": {
-      cookTime: "0 minutes",
-      ingredients: [
-        { name: "Roasted Pumpkin Seeds", quantity: "3/4 cup" },
-        { name: "Fresh Spinach", quantity: "3 cups, packed" },
-        { name: "Frozen Banana Slices", quantity: "3 medium" },
-        { name: "Almond Milk (or other milk)", quantity: "1 1/2 cups" },
-        { name: "Maple Syrup", quantity: "3 tablespoons (or to taste)" },
-      ],
+      yield: "12",
+      cookTime: "1800",
       nutrition: {
-        calcium: "90 mg",
-        calories: "750 kcal",
-        carbohydrates: "90 g",
-        fat: "36 g",
-        fiber: "15 g",
-        protein: "24 g",
+        fat: "45g",
+        fiber: "30g",
+        calcium: "240mg",
+        protein: "45g",
+        calories: "1050kcal",
+        carbohydrates: "135g",
       },
-      preparationTime: "15 minutes",
-      totalTime: "15 minutes",
-      yield: "3 servings",
-      notes: [
-        "Adjust sweetness to your preference.  If your pumpkin seeds are salty, you might need less maple syrup.",
-        "Feel free to experiment with other greens, such as kale.  You might want a little more liquid if using kale.",
-        "For a thicker smoothie, use more frozen banana slices. For a thinner smoothie, use more almond milk.",
+      totalTime: "3000",
+      ingredients: [
+        {
+          name: "Coconut oil",
+          quantity: "6 tablespoons",
+        },
+        {
+          name: "Onion",
+          quantity: "3 medium",
+        },
+        {
+          name: "Garlic",
+          quantity: "6 cloves",
+        },
+        {
+          name: "Ginger",
+          quantity: "3 inches",
+        },
+        {
+          name: "Curry powder",
+          quantity: "3 tablespoons",
+        },
+        {
+          name: "Turmeric",
+          quantity: "3 teaspoons",
+        },
+        {
+          name: "Cumin",
+          quantity: "1 1/2 teaspoons",
+        },
+        {
+          name: "Coriander",
+          quantity: "1 1/2 teaspoons",
+        },
+        {
+          name: "Cayenne pepper",
+          quantity: "1/2 teaspoon (optional)",
+        },
+        {
+          name: "Diced tomatoes",
+          quantity: "3 (14.5-ounce) cans",
+        },
+        {
+          name: "Chickpeas",
+          quantity: "3 (15-ounce) cans",
+        },
+        {
+          name: "Vegetable broth",
+          quantity: "12 cups",
+        },
+        {
+          name: "Coconut milk",
+          quantity: "3 (13.5-ounce) cans",
+        },
+        {
+          name: "Spinach",
+          quantity: "15 ounces",
+        },
+        {
+          name: "Salt and pepper",
+          quantity: "to taste",
+        },
+        {
+          name: "Cilantro",
+          quantity: "fresh, optional",
+        },
+        {
+          name: "Lime",
+          quantity: "optional",
+        },
+        {
+          name: "Yogurt or coconut cream",
+          quantity: "optional",
+        },
       ],
+      preparationTime: "1200",
     },
     "4X": {
-      cookTime: "0 minutes",
-      ingredients: [
-        { name: "Roasted Pumpkin Seeds", quantity: "1 cup" },
-        { name: "Fresh Spinach", quantity: "4 cups, packed" },
-        { name: "Frozen Banana Slices", quantity: "4 medium" },
-        { name: "Almond Milk (or other milk)", quantity: "2 cups" },
-        { name: "Maple Syrup", quantity: "4 tablespoons (or to taste)" },
-      ],
+      yield: "16",
+      cookTime: "2100",
       nutrition: {
-        calcium: "120 mg",
-        calories: "1000 kcal",
-        carbohydrates: "120 g",
-        fat: "48 g",
-        fiber: "20 g",
-        protein: "32 g",
+        fat: "60g",
+        fiber: "40g",
+        calcium: "320mg",
+        protein: "60g",
+        calories: "1400kcal",
+        carbohydrates: "180g",
       },
-      preparationTime: "20 minutes",
-      totalTime: "20 minutes",
-      yield: "4 servings",
-      notes: [
-        "Adjust sweetness to your preference. If your pumpkin seeds are salty, you might need less maple syrup.",
-        "Feel free to experiment with other greens, such as kale. You might want a little more liquid if using kale.",
-        "For a thicker smoothie, use more frozen banana slices. For a thinner smoothie, use more almond milk.",
+      totalTime: "3600",
+      ingredients: [
+        {
+          name: "Coconut oil",
+          quantity: "8 tablespoons",
+        },
+        {
+          name: "Onion",
+          quantity: "4 medium",
+        },
+        {
+          name: "Garlic",
+          quantity: "8 cloves",
+        },
+        {
+          name: "Ginger",
+          quantity: "4 inches",
+        },
+        {
+          name: "Curry powder",
+          quantity: "4 tablespoons",
+        },
+        {
+          name: "Turmeric",
+          quantity: "4 teaspoons",
+        },
+        {
+          name: "Cumin",
+          quantity: "2 teaspoons",
+        },
+        {
+          name: "Coriander",
+          quantity: "2 teaspoons",
+        },
+        {
+          name: "Cayenne pepper",
+          quantity: "3/4 teaspoon (optional)",
+        },
+        {
+          name: "Diced tomatoes",
+          quantity: "4 (14.5-ounce) cans",
+        },
+        {
+          name: "Chickpeas",
+          quantity: "4 (15-ounce) cans",
+        },
+        {
+          name: "Vegetable broth",
+          quantity: "16 cups",
+        },
+        {
+          name: "Coconut milk",
+          quantity: "4 (13.5-ounce) cans",
+        },
+        {
+          name: "Spinach",
+          quantity: "20 ounces",
+        },
+        {
+          name: "Salt and pepper",
+          quantity: "to taste",
+        },
+        {
+          name: "Cilantro",
+          quantity: "fresh, optional",
+        },
+        {
+          name: "Lime",
+          quantity: "optional",
+        },
+        {
+          name: "Yogurt or coconut cream",
+          quantity: "optional",
+        },
       ],
+      preparationTime: "1500",
     },
   },
   seo: {
-    metaDescription:
-      "Discover a delicious and nutritious pumpkin seed smoothie recipe! This easy-to-make recipe is packed with healthy fats, protein, and fiber.",
+    ogTitle: "Chickpea Curry with Coconut Milk and Spinach",
     ogDescription:
-      "Try this flavorful and healthy pumpkin seed smoothie recipe! It's easy to make and perfect for a quick breakfast or snack.",
-    ogTitle: "Pumpkin Seed Smoothie: Flavorful and Nutritious!",
-    primaryKeywords: ["pumpkin seed smoothie recipe"],
+      "This chickpea curry recipe is a delicious and healthy meal, perfect for a weeknight dinner. Learn how to make this simple yet satisfying dish!",
+    metaDescription:
+      "Enjoy a flavorful and easy chickpea curry recipe featuring creamy coconut milk and nutritious spinach. Perfect for weeknight dinners!",
+    primaryKeywords: [
+      "chickpea curry",
+      "coconut milk curry",
+      "spinach curry",
+      "vegetarian curry",
+      "easy curry recipe",
+    ],
     secondaryKeywords: [
-      "healthy smoothie recipes",
-      "green smoothie recipes",
-      "pumpkin seed benefits",
-      "nutritious breakfast ideas",
-      "easy smoothie recipes",
-      "vegan smoothie recipes",
-      "healthy snack ideas",
-      "high protein smoothie",
-      "delicious smoothie",
-      "quick smoothie recipes",
+      "vegan curry",
+      "indian curry",
+      "comfort food",
+      "healthy curry",
+      "weeknight dinner",
+      "one-pot meal",
+      "chickpea recipe",
+      "coconut milk recipe",
+      "spinach recipe",
+      "curry powder",
     ],
   },
+  faq: [
+    {
+      answer:
+        "Yes, absolutely!  Just make sure to rinse the chickpeas thoroughly before adding them to the curry. Canned chickpeas are already cooked, so they'll need less cooking time.",
+      question: "Can I use canned chickpeas instead of dried?",
+    },
+    {
+      answer:
+        "For a richer flavor, I recommend using full-fat coconut milk.  However, you can use light coconut milk if you prefer a lighter curry.  Just be aware that the texture might be slightly thinner.",
+      question: "What type of coconut milk should I use?",
+    },
+    {
+      answer:
+        "Leftovers can be stored in an airtight container in the refrigerator for up to 3 days. Reheat gently on the stovetop or in the microwave.  The flavors actually deepen a bit after sitting for a while!",
+      question: "How should I store leftover curry?",
+    },
+    {
+      answer:
+        "While this recipe is already vegetarian, to make it vegan, simply ensure that your vegetable broth or stock is vegan-friendly, as some broths contain fish or animal products.  Double-check your ingredients!",
+      question: "Is this recipe vegan?",
+    },
+    {
+      answer:
+        "Absolutely!  Feel free to add other vegetables like cauliflower, potatoes, or green beans. You could also try adding different spices to customize it to your liking. Get creative!",
+      question: "Can I add other vegetables to this curry?",
+    },
+  ],
+  equipments: [],
+  creationDate: "2025-02-06T15:16:37.960Z",
 };

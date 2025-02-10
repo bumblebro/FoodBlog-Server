@@ -44,6 +44,9 @@ model FoodBlogs {
   instructions      String[]     // Step-by-step instructions for the recipe
   recipedescription String
   recipedetails     Json     // Recipe details for different serving sizes (1X, 2X, 3X, 4X)
-  seo               Json     // SEO-related information (meta description, keywords, etc.)
+  seo               Json     // SEO-related information (meta description, keywords, etc.)    
+  faq               Json     // FAQ data (an array of objects with "question" and "answer" fields)
+  equipments         String[]     // Equipment names (an array of strings)
   creationDate      DateTime @default(now()) // Date the blog was created
+  reviews           Json[]
 }

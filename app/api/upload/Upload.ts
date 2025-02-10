@@ -135,6 +135,10 @@ export default async function UPLOAD({
 
     console.log(`title picked :`, title);
 
+    if (title.toLowerCase().includes("updated")) {
+      throw new Error("Title cannot contain the word 'updated'.");
+  }
+
     const prompt = `Write a well-researched, engaging, and structured recipe blog post that contains a description, ingredients, directions to cook, and a conclusion, around 1500 to 2500 words, for the Food and Drink niche. The content should avoid repetitive phrasing, formulaic structures, and predictable sentence patterns, which are often detectable by AI content tools. Instead, rewrite these unnatural elements by varying sentence structures and word choices in a way that mimics human writing styles. Ensure the text has a natural flow and maintains reader engagement throughout, just like human writers who enhance clarity and readability through diverse language use.
 
 Make sure the content replicates the engaging and natural qualities of human-authored text, ensuring it is indistinguishable from human writing. The final output should be precise, pass AI detection tools, and be enhanced for readability, flow, and engagement.
@@ -170,15 +174,23 @@ The structure of the blog should follow this format:
 3. **Image Query:**
    - Generate a query for the main image that aligns with the blog content.
 
-4. **Recipe Description:**
+4. **equipments:**
+   - Include an array of equipment names (as strings) required for the recipe.
+
+5. **faq:**
+   - Include an array of 4 to 6 frequently asked questions (FAQ) about the recipe. Each FAQ item should include:
+     - **Question:** A clear question that a reader might ask.
+     - **Answer:** A concise and helpful answer to the question.
+
+6. **Recipe Description:**
    - Include the following fields:
      - **Short Description:** A concise summary of the recipe (1-2 sentences).
      - **Detailed Description:** A detailed blog content of the recipe, broken into an array of 2-3 strings (each string representing a paragraph or chunk of content).
 
-5. **Instructions:**  
+7. **Instructions:**  
    - ** Provide **extremely detailed, step-by-step instructions** Each step should be **actionable, clear, and granular**, ensuring that even a beginner can follow along without confusion. Include tips, visual cues (e.g., "the dough should look smooth and elastic"), and troubleshooting advice where applicable.
 
-5. **Recipe Details:**
+8. **Recipe Details:**
    - Include the following fields:
      - **Preparation Time:** Time required for preparation in seconds.
      - **Cook Time:** Time required for cooking in seconds.
@@ -188,7 +200,7 @@ The structure of the blog should follow this format:
      - **Notes:** Additional tips or notes for the recipe.
      - **Nutrition:** Nutritional information per serving.
 
-6. **SEO Information:**
+9. **SEO Information:**
    - Include meta description, Open Graph title and description, primary keywords, and secondary keywords.
    - Primary Keywords: One primary keyword for SEO to rank top in Google search, analyze it properly.
    - Secondary Keywords: Ten secondary keywords for SEO to rank top in Google search, analyze it properly.
@@ -202,6 +214,29 @@ Make sure the content is thoroughly researched and provides value to readers. Av
   "quote": "Cooking isn't just about the ingredients—it’s about creating something that nourishes both body and soul.",
   "pageTitle": "How to Create the Perfect Homemade Pizza",
   "imageQuery": "person making homemade pizza",
+  "equipments": ["Mixing Bowl", "Whisk", "Rolling Pin", "Baking Sheet"],
+  "faq": [
+    {
+      "question": "Can I use almond flour instead of all-purpose flour?",
+      "answer": "Yes, you can substitute almond flour, but the texture may be slightly different. You may need to adjust the liquid ingredients to get the right consistency."
+    },
+    {
+      "question": "How long does it take to cook this dish?",
+      "answer": "It takes approximately 30 minutes to prepare and cook this dish, but times may vary depending on your stove and ingredients."
+    },
+    {
+      "question": "Can I make this recipe vegan?",
+      "answer": "Yes! You can replace dairy ingredients with plant-based alternatives like almond milk or coconut cream and use flaxseed meal as an egg substitute."
+    },
+    {
+      "question": "How should I store leftovers?",
+      "answer": "Store leftovers in an airtight container in the refrigerator for up to 3 days. Reheat in a microwave or on the stovetop before serving."
+    },
+    {
+      "question": "Can I freeze this dish?",
+      "answer": "Yes, you can freeze it for up to 2 months. Make sure to let it cool completely before transferring it to a freezer-safe container."
+    }
+  ],
   "recipeDescription": {
     "shortDescription": "There’s something magical about making pizza from scratch. The smell of fresh dough rising, the sound of sizzling toppings, and the joy of pulling a golden, cheesy masterpiece out of the oven—it’s an experience that brings people together.",
     "detailedDescription": [
@@ -310,6 +345,36 @@ Make sure the content is thoroughly researched and provides value to readers. Av
         imageQuery: {
           type: SchemaType.STRING,
           description: "Query for the image",
+          nullable: false,
+        },
+        equipments: {
+          type: SchemaType.ARRAY,
+          description: "Array of equipment names required for the recipe",
+          items: {
+            type: SchemaType.STRING,
+          },
+          nullable: false,
+        },
+        faq: {
+          type: SchemaType.ARRAY,
+          description:
+            "Array of frequently asked questions about the recipe about 4-6",
+          items: {
+            type: SchemaType.OBJECT,
+            properties: {
+              question: {
+                type: SchemaType.STRING,
+                description: "The FAQ question",
+                nullable: false,
+              },
+              answer: {
+                type: SchemaType.STRING,
+                description: "The answer to the FAQ question",
+                nullable: false,
+              },
+            },
+            required: ["question", "answer"],
+          },
           nullable: false,
         },
         recipeDescription: {
@@ -850,6 +915,8 @@ Make sure the content is thoroughly researched and provides value to readers. Av
         "instructions",
         "recipeDetails",
         "seo",
+        "equipments",
+        "faq",
       ],
     };
 

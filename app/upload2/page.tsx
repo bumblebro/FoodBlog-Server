@@ -212,7 +212,7 @@ function Upload2() {
       console.log(`BLOG UPLOAD START...`);
 
       if (
-        (path[0],
+        ((path[0],
         covertedBlog.pageTitle,
         covertedBlog.imageQuery,
         link,
@@ -224,7 +224,9 @@ function Upload2() {
         covertedBlog.seo,
         covertedBlog.recipeDetails,
         covertedBlog.instructions,
-        covertedBlog.recipeDescription.shortDescription)
+        covertedBlog.recipeDescription.shortDescription),
+        covertedBlog.faq,
+        covertedBlog.equipments)
       ) {
         const res = await axios.post("/api/dbupload", {
           section: path[0],
@@ -240,6 +242,8 @@ function Upload2() {
           author: covertedBlog.author,
           quote: covertedBlog.quote,
           seo: covertedBlog.seo,
+          faq: covertedBlog.faq,
+          equipments: covertedBlog.equipments,
           slug: `${path[0]}/${path[1]}/${path[2]}/${slugify(
             covertedBlog.pageTitle
           )}`,
