@@ -25,6 +25,7 @@ export async function CONVERT(content: string) {
       "--no-zygote",
       "--disable-setuid-sandbox",
       "--single-process",
+      "--headless=new",
     ],
   });
 

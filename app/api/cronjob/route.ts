@@ -6,36 +6,149 @@ import slugify from "slugify";
 import UPLOAD from "../upload/Upload";
 import { CONVERT } from "../humanizee/Convert";
 
+import { NextRequest } from "next/server";
+import puppeteer from "puppeteer";
+
+const REGEX = /\["(\bhttps?:\/\/[^"]+)",(\d+),(\d+)\],null/g;
+
+/**
+ * Converts unicode escape sequences to string
+ * @param {string} content
+ * @returns {string}
+ */
+const unicodeToString = (content: any) =>
+  content.replace(/\\u[\dA-F]{4}/gi, (match: any) =>
+    String.fromCharCode(parseInt(match.replace(/\\u/g, ""), 16))
+  );
+
+/**
+ * Fetches image URLs from Google Image Search
+ * @param {String} searchTerm Search term to search
+ * @returns {Promise<[{url: string, height: number, width: number}]>}
+ */
+async function fetchImageUrls(searchTerm: any) {
+  if (!searchTerm || typeof searchTerm !== "string")
+    throw new TypeError("searchTerm must be a string.");
+  const browser = await puppeteer.launch({
+    headless: true,
+    defaultViewport: null,
+    args: [
+      "--disable-gpu",
+      "--window-size=1920,1080",
+      "--no-sandbox",
+      "--no-zygote",
+      "--disable-setuid-sandbox",
+      "--single-process",
+      "--headless=new",
+    ],
+  });
+
+  try {
+    const page = await browser.newPage();
+
+    // Set the user agent
+    await page.setUserAgent(
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
+    );
+
+    // Navigate to Google Image Search
+    const searchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(
+      searchTerm +
+        " " +
+        "Unspash" +
+        " " +
+        "Freepik" +
+        " " +
+        "Pixabay" +
+        " " +
+        "Pexels"
+    )}`;
+    await page.goto(searchUrl, { waitUntil: "networkidle2" });
+
+    // Extract the page content
+    const content = await page.content();
+
+    // Process the page content
+    const results = [];
+    let result;
+
+    while ((result = REGEX.exec(content))) {
+      results.push({
+        url: unicodeToString(result[1]),
+        height: +result[2],
+        width: +result[3],
+      });
+    }
+
+    return results;
+  } catch (error) {
+    console.error("Error fetching image URLs:", error);
+    throw new Error("Error fetching image URLs");
+  } finally {
+    const pages = await browser.pages();
+    await Promise.all(pages.map((p: any) => p.close())); // Close all pages
+    console.log("all pages closed");
+    await browser.close();
+    const childProcess = browser.process();
+    if (childProcess) {
+      childProcess.kill(9);
+    }
+  }
+}
+
+export async function image(query: string) {
+  // const body = await req.json();
+
+  try {
+    const results = await fetchImageUrls(query);
+    // console.log(`res`, results);
+    // console.log(results.slice(0, 10));
+
+    // const url = results.find((item) => item.url.startsWith("https:"));
+    let url = results.find(
+      (item) =>
+        item.url.startsWith("https:") && !item.url.includes("shutterstock")
+    );
+
+    // if (url && url.url.includes("shutterstock")) {
+    //   throw new Error("Shutterstock images are not allowed.");
+    // }
+    console.log(`url`, url);
+    return Response.json({ results: url });
+  } catch (e) {
+    console.error(e);
+    return Response.json({ e });
+  }
+}
+
+// const searchImages = async (query: string) => {
+//   const response = await axios.post("/api/scrape", {
+//     query,
+//   });
+//   return response.data.results.url;
+// };
+
+async function getRandomPath(subSections: any) {
+  const firstLevel = Object.keys(subSections);
+  const randomFirstLevel =
+    firstLevel[Math.floor(Math.random() * firstLevel.length)];
+  const secondLevel = Object.keys(subSections[randomFirstLevel]);
+  const randomSecondLevel =
+    secondLevel[Math.floor(Math.random() * secondLevel.length)];
+  const thirdLevel = subSections[randomFirstLevel][randomSecondLevel];
+  const randomThirdLevel =
+    thirdLevel[Math.floor(Math.random() * thirdLevel.length)];
+  return [randomFirstLevel, randomSecondLevel, randomThirdLevel];
+}
+
 async function Upload2() {
-  let isRunning = false;
   let successCount = 0;
   let failedCount = 0;
-  let consoleData = [];
 
   if (successCount == 10) {
     // refreshPage();
     return;
   }
-
-  async function getRandomPath(subSections: any) {
-    const firstLevel = Object.keys(subSections);
-    const randomFirstLevel =
-      firstLevel[Math.floor(Math.random() * firstLevel.length)];
-    const secondLevel = Object.keys(subSections[randomFirstLevel]);
-    const randomSecondLevel =
-      secondLevel[Math.floor(Math.random() * secondLevel.length)];
-    const thirdLevel = subSections[randomFirstLevel][randomSecondLevel];
-    const randomThirdLevel =
-      thirdLevel[Math.floor(Math.random() * thirdLevel.length)];
-    return [randomFirstLevel, randomSecondLevel, randomThirdLevel];
-  }
-
-  const searchImages = async (query: string) => {
-    const response = await axios.post("/api/scrape", {
-      query,
-    });
-    return response.data.results.url;
-  };
 
   async function startProcess() {
     console.log(`SUCCESS COUNT`, successCount);
@@ -89,7 +202,7 @@ async function Upload2() {
         console.log("Failed to have imagequery for main");
         throw new Error("Failed to have imagequery for main");
       } else {
-        link = await searchImages(covertedBlog.imageQuery);
+        link = await image(covertedBlog.imageQuery);
       }
 
       // let primaryKeywords = await KEYWORD(covertedBlog.seo.primaryKeywords[0]);
@@ -114,7 +227,8 @@ async function Upload2() {
             if (item.imageQuery == null || item.imageQuery == "null") {
               link = "null";
             } else {
-              link = await searchImages(item.imageQuery);
+              console.log(`Imageee q`, item.imageQuery);
+              link = await image(item.imageQuery);
             }
 
             // Function to retry humanizing content

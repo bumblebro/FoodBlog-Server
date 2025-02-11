@@ -23,7 +23,6 @@ const unicodeToString = (content) =>
 async function fetchImageUrls(searchTerm) {
   if (!searchTerm || typeof searchTerm !== "string")
     throw new TypeError("searchTerm must be a string.");
-
   const browser = await puppeteer.launch({
     headless: true,
     defaultViewport: null,
@@ -34,6 +33,7 @@ async function fetchImageUrls(searchTerm) {
       "--no-zygote",
       "--disable-setuid-sandbox",
       "--single-process",
+      "--headless=new",
     ],
   });
 
@@ -79,18 +79,6 @@ async function fetchImageUrls(searchTerm) {
     console.error("Error fetching image URLs:", error);
     throw new Error("Error fetching image URLs");
   } finally {
-    // try {
-    //   // const pages = await browser.pages();
-    //   const pages = await browser.pages();
-
-    //   await Promise.all(pages.map((p: any) => p.close()));
-    //   console.log("All pages closed");
-    // } catch (err) {
-    //   console.error("Error closing pages:", err);
-    // } finally {
-    //   await browser.close(); // Ensure browser is properly closed
-    //   console.log("Browser closed");
-    // }
     const pages = await browser.pages();
     await Promise.all(pages.map((p: any) => p.close())); // Close all pages
     console.log("all pages closed");
@@ -110,11 +98,15 @@ export async function POST(req: NextRequest) {
     // console.log(`res`, results);
     // console.log(results.slice(0, 10));
 
-    const url = results.find((item) => item.url.startsWith("https:"));
+    // const url = results.find((item) => item.url.startsWith("https:"));
+    let url = results.find(
+      (item) =>
+        item.url.startsWith("https:") && !item.url.includes("shutterstock")
+    );
 
-    if (url && url.url.includes("shutterstock")) {
-      throw new Error("Shutterstock images are not allowed.");
-    }
+    // if (url && url.url.includes("shutterstock")) {
+    //   throw new Error("Shutterstock images are not allowed.");
+    // }
     console.log(`url`, url);
     return Response.json({ results: url });
   } catch (e) {
