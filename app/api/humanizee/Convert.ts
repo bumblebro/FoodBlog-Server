@@ -90,14 +90,18 @@ export async function CONVERT(content: string) {
     );
     console.log("Page close startttt");
 
-    const pages = await browser.pages();
-    await Promise.all(pages.map((p: any) => p.close())); // Close all pages
-    console.log("all pages closed");
-    await browser.close();
-
     return humanizedContent;
   } catch (error) {
     console.error("Scraping failed: ", error);
     return null;
+  } finally {
+    const pages = await browser.pages();
+    await Promise.all(pages.map((p: any) => p.close())); // Close all pages
+    console.log("all pages closed");
+    await browser.close();
+    const childProcess = browser.process();
+    if (childProcess) {
+      childProcess.kill(9);
+    }
   }
 }

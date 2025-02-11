@@ -24,19 +24,20 @@ async function fetchImageUrls(searchTerm) {
   if (!searchTerm || typeof searchTerm !== "string")
     throw new TypeError("searchTerm must be a string.");
 
+  const browser = await puppeteer.launch({
+    headless: true,
+    defaultViewport: null,
+    args: [
+      "--disable-gpu",
+      "--window-size=1920,1080",
+      "--no-sandbox",
+      "--no-zygote",
+      "--disable-setuid-sandbox",
+      "--single-process",
+    ],
+  });
+
   try {
-    const browser = await puppeteer.launch({
-      headless: true,
-      defaultViewport: null,
-      args: [
-        "--disable-gpu",
-        "--window-size=1920,1080",
-        "--no-sandbox",
-        "--no-zygote",
-        "--disable-setuid-sandbox",
-        "--single-process",
-      ],
-    });
     const page = await browser.newPage();
 
     // Set the user agent
@@ -46,7 +47,15 @@ async function fetchImageUrls(searchTerm) {
 
     // Navigate to Google Image Search
     const searchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(
-      searchTerm + "Unspash" + "Freepik" + "Pixabay" + "Pexels"
+      searchTerm +
+        " " +
+        "Unspash" +
+        " " +
+        "Freepik" +
+        " " +
+        "Pixabay" +
+        " " +
+        "Pexels"
     )}`;
     await page.goto(searchUrl, { waitUntil: "networkidle2" });
 
@@ -65,6 +74,11 @@ async function fetchImageUrls(searchTerm) {
       });
     }
 
+    return results;
+  } catch (error) {
+    console.error("Error fetching image URLs:", error);
+    throw new Error("Error fetching image URLs");
+  } finally {
     try {
       // const pages = await browser.pages();
       const pages = await browser.pages();
@@ -77,10 +91,10 @@ async function fetchImageUrls(searchTerm) {
       await browser.close(); // Ensure browser is properly closed
       console.log("Browser closed");
     }
-    return results;
-  } catch (error) {
-    console.error("Error fetching image URLs:", error);
-    throw new Error("Error fetching image URLs");
+    const childProcess = browser.process();
+    if (childProcess) {
+      childProcess.kill(9);
+    }
   }
 }
 
