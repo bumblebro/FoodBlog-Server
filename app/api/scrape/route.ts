@@ -99,9 +99,14 @@ export async function POST(req: NextRequest) {
     // console.log(results.slice(0, 10));
 
     // const url = results.find((item) => item.url.startsWith("https:"));
+    // let url = results.find(
+    //   (item) =>
+    //     item.url.startsWith("https:") && !item.url.includes("shutterstock")
+    // );
     let url = results.find(
       (item) =>
-        item.url.startsWith("https:") && !item.url.includes("shutterstock")
+        item.url.startsWith("https:") &&
+        !/(shutterstock|instagram|facebook)/i.test(item.url)
     );
 
     // if (url && url.url.includes("shutterstock")) {

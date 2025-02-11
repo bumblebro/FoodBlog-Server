@@ -25,9 +25,13 @@ export async function CONVERT(content: string) {
       "--no-zygote",
       "--disable-setuid-sandbox",
       "--single-process",
-      "--headless=new",
     ],
   });
+
+  // const browser = await puppeteer.launch({
+  //   headless: false,
+  //   args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  // });
 
   // const browserWSEndpoint = await browser.wsEndpoint();
   try {

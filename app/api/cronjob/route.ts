@@ -5,6 +5,18 @@ import axios from "axios";
 import slugify from "slugify";
 import UPLOAD from "../upload/Upload";
 import { CONVERT } from "../humanizee/Convert";
+///////////////// DB Upload
+
+import { PrismaClient } from "@prisma/client";
+import { withAccelerate } from "@prisma/extension-accelerate";
+
+const prisma = new PrismaClient().$extends(withAccelerate());
+
+///////////////// DB Upload
+
+let timestorun = 1;
+
+///////////////// Google Imageee
 
 import { NextRequest } from "next/server";
 import puppeteer from "puppeteer";
@@ -96,7 +108,7 @@ async function fetchImageUrls(searchTerm: any) {
   }
 }
 
-export async function image(query: string) {
+async function image(query: string) {
   // const body = await req.json();
 
   try {
@@ -105,21 +117,28 @@ export async function image(query: string) {
     // console.log(results.slice(0, 10));
 
     // const url = results.find((item) => item.url.startsWith("https:"));
+    // let url = results.find(
+    //   (item) =>
+    //     item.url.startsWith("https:") && !item.url.includes("shutterstock")
+    // );
     let url = results.find(
       (item) =>
-        item.url.startsWith("https:") && !item.url.includes("shutterstock")
+        item.url.startsWith("https:") &&
+        !/(shutterstock|instagram|facebook)/i.test(item.url)
     );
 
     // if (url && url.url.includes("shutterstock")) {
     //   throw new Error("Shutterstock images are not allowed.");
     // }
     console.log(`url`, url);
-    return Response.json({ results: url });
+    return url;
   } catch (e) {
     console.error(e);
-    return Response.json({ e });
+    return e;
   }
 }
+
+///////////////// Google Imageee
 
 // const searchImages = async (query: string) => {
 //   const response = await axios.post("/api/scrape", {
@@ -149,10 +168,7 @@ async function Upload2() {
     // refreshPage();
     return;
   }
-
   async function startProcess() {
-    console.log(`SUCCESS COUNT`, successCount);
-    console.log(`FAILED COUNT`, failedCount);
     try {
       // Getting random section
       const path = await getRandomPath(subSections);
@@ -194,7 +210,7 @@ async function Upload2() {
         startProcess();
         return;
       }
-      let link;
+      let link: string;
       if (
         covertedBlog.imageQuery == null ||
         covertedBlog.imageQuery == "null"
@@ -202,7 +218,9 @@ async function Upload2() {
         console.log("Failed to have imagequery for main");
         throw new Error("Failed to have imagequery for main");
       } else {
-        link = await image(covertedBlog.imageQuery);
+        let linkgot: any = await image(covertedBlog.imageQuery);
+        console.log(`linkgot`, linkgot);
+        link = linkgot.url;
       }
 
       // let primaryKeywords = await KEYWORD(covertedBlog.seo.primaryKeywords[0]);
@@ -223,7 +241,7 @@ async function Upload2() {
             // title: string;
             description: string;
           }) => {
-            let link;
+            let link: any;
             if (item.imageQuery == null || item.imageQuery == "null") {
               link = "null";
             } else {
@@ -250,13 +268,13 @@ async function Upload2() {
               return response;
             }
 
-            const response = await runUntilResponse(item.description);
+            // const response = await runUntilResponse(item.description);
 
             return {
               // title: item.title,
-              description: response,
-              // description: item.description,
-              url: link,
+              // description: response,
+              description: item.description,
+              url: link.url,
               alt: item.imageQuery,
             };
           }
@@ -279,7 +297,7 @@ async function Upload2() {
 
       console.log(`UPLOADDDDD STARTTTTTTTTT`);
       if (
-        ((path[0],
+        (path[0],
         covertedBlog.pageTitle,
         covertedBlog.imageQuery,
         link,
@@ -291,44 +309,91 @@ async function Upload2() {
         covertedBlog.seo,
         covertedBlog.recipeDetails,
         covertedBlog.instructions,
-        covertedBlog.recipeDescription.shortDescription),
+        covertedBlog.recipeDescription.shortDescription,
         covertedBlog.faq,
         covertedBlog.equipments)
       ) {
-        const res = await axios.post("/api/dbupload", {
-          section: path[0],
-          title: slugify(covertedBlog.pageTitle),
-          imagealt: covertedBlog.imageQuery,
-          imageurl: link,
-          subsection: path[1],
-          subsubsection: path[2],
-          content: results,
-          instructions: covertedBlog.instructions,
-          recipedetails: covertedBlog.recipeDetails,
-          recipedescription: covertedBlog.recipeDescription.shortDescription,
-          author: covertedBlog.author,
-          quote: covertedBlog.quote,
-          seo: covertedBlog.seo,
-          faq: covertedBlog.faq,
-          equipments: covertedBlog.equipments,
-          slug: `${path[0]}/${path[1]}/${path[2]}/${slugify(
-            covertedBlog.pageTitle
-          )}`,
-        });
-        if (res.status) {
-          console.log(
-            "UPLOAD SUCCESSFULL",
-            res.data,
-            "STARTING NEXT CYCLE... STOOOOOPPPPINGGGGGGGGGGG"
-          );
+        console.log(`UPLOADDDDD INSIDEEE`);
+
+        try {
+          let reqres = {
+            section: path[0],
+            title: slugify(covertedBlog.pageTitle),
+            imagealt: covertedBlog.imageQuery,
+            imageurl: link,
+            subsection: path[1],
+            subsubsection: path[2],
+            content: results,
+            instructions: covertedBlog.instructions,
+            recipedetails: covertedBlog.recipeDetails,
+            recipedescription: covertedBlog.recipeDescription.shortDescription,
+            author: covertedBlog.author,
+            quote: covertedBlog.quote,
+            seo: covertedBlog.seo,
+            faq: covertedBlog.faq,
+            equipments: covertedBlog.equipments,
+            slug: `${path[0]}/${path[1]}/${path[2]}/${slugify(
+              covertedBlog.pageTitle
+            )}`,
+          };
+
+          // const body = await req.json();
+          // console.log(body);
+          const newBlog = await prisma.foodBlogs.create({
+            data: reqres,
+          });
+          console.log("UPLOAD SUCCESSFULL", newBlog);
           successCount = successCount + 1;
-          // console.clear(); // Clears the console
-          // startProcess(); // Continue the process if running
-        } else {
+          if (successCount < timestorun) {
+            console.log(`SUCCESS COUNT`, successCount);
+            console.log(`FAILED COUNT`, failedCount);
+            startProcess();
+          } else {
+            console.log(`SUCCESS COUNT`, successCount);
+            console.log(`FAILED COUNT`, failedCount);
+            console.log("STOOOOOPPPPINGGGGGGGGGGG");
+          }
+        } catch (error) {
+          console.log(`errorrrrrr`, error);
           failedCount = failedCount + 1;
           // console.clear(); // Clears the console
           startProcess(); // Retry if failed
         }
+
+        // const res = await axios.post("/api/dbupload", {
+        //   section: path[0],
+        //   title: slugify(covertedBlog.pageTitle),
+        //   imagealt: covertedBlog.imageQuery,
+        //   imageurl: link,
+        //   subsection: path[1],
+        //   subsubsection: path[2],
+        //   content: results,
+        //   instructions: covertedBlog.instructions,
+        //   recipedetails: covertedBlog.recipeDetails,
+        //   recipedescription: covertedBlog.recipeDescription.shortDescription,
+        //   author: covertedBlog.author,
+        //   quote: covertedBlog.quote,
+        //   seo: covertedBlog.seo,
+        //   faq: covertedBlog.faq,
+        //   equipments: covertedBlog.equipments,
+        //   slug: `${path[0]}/${path[1]}/${path[2]}/${slugify(
+        //     covertedBlog.pageTitle
+        //   )}`,
+        // });
+        // if (res.status) {
+        //   console.log(
+        //     "UPLOAD SUCCESSFULL",
+        //     res.data,
+        //     "STARTING NEXT CYCLE... STOOOOOPPPPINGGGGGGGGGGG"
+        //   );
+        //   successCount = successCount + 1;
+        //   // console.clear(); // Clears the console
+        //   // startProcess(); // Continue the process if running
+        // } else {
+        //   failedCount = failedCount + 1;
+        //   // console.clear(); // Clears the console
+        //   startProcess(); // Retry if failed
+        // }
       }
     } catch (error) {
       console.error("ERROR OCCURED, RETRYING...", error);

@@ -539,6 +539,7 @@ Make sure the content is thoroughly researched and provides value to readers. Av
                 "yield",
                 "ingredients",
                 "nutrition",
+                "notes",
               ],
             },
             "2X": {
@@ -647,6 +648,7 @@ Make sure the content is thoroughly researched and provides value to readers. Av
                 "yield",
                 "ingredients",
                 "nutrition",
+                "notes",
               ],
             },
             "3X": {
@@ -755,6 +757,7 @@ Make sure the content is thoroughly researched and provides value to readers. Av
                 "yield",
                 "ingredients",
                 "nutrition",
+                "notes",
               ],
             },
             "4X": {
@@ -863,6 +866,7 @@ Make sure the content is thoroughly researched and provides value to readers. Av
                 "yield",
                 "ingredients",
                 "nutrition",
+                "notes",
               ],
             },
           },
