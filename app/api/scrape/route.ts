@@ -79,18 +79,22 @@ async function fetchImageUrls(searchTerm) {
     console.error("Error fetching image URLs:", error);
     throw new Error("Error fetching image URLs");
   } finally {
-    try {
-      // const pages = await browser.pages();
-      const pages = await browser.pages();
+    // try {
+    //   // const pages = await browser.pages();
+    //   const pages = await browser.pages();
 
-      await Promise.all(pages.map((p: any) => p.close()));
-      console.log("All pages closed");
-    } catch (err) {
-      console.error("Error closing pages:", err);
-    } finally {
-      await browser.close(); // Ensure browser is properly closed
-      console.log("Browser closed");
-    }
+    //   await Promise.all(pages.map((p: any) => p.close()));
+    //   console.log("All pages closed");
+    // } catch (err) {
+    //   console.error("Error closing pages:", err);
+    // } finally {
+    //   await browser.close(); // Ensure browser is properly closed
+    //   console.log("Browser closed");
+    // }
+    const pages = await browser.pages();
+    await Promise.all(pages.map((p: any) => p.close())); // Close all pages
+    console.log("all pages closed");
+    await browser.close();
     const childProcess = browser.process();
     if (childProcess) {
       childProcess.kill(9);
