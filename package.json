@@ -20,6 +20,7 @@
     "async-g-i-s": "^1.5.5",
     "axios": "^1.7.5",
     "clipboard-copy": "^4.0.1",
+    "cron": "^3.5.0",
     "flowbite-react": "^0.10.1",
     "install": "^0.13.0",
     "markdown-it": "^14.1.0",
