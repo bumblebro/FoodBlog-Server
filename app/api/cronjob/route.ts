@@ -67,17 +67,22 @@ async function fetchImageUrls(searchTerm: any) {
     );
 
     // Navigate to Google Image Search
-    const searchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(
-      searchTerm +
-        " " +
-        "Unspash" +
-        " " +
-        "Freepik" +
-        " " +
-        "Pixabay" +
-        " " +
-        "Pexels"
+    // const searchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(
+    //   searchTerm +
+    //     " " +
+    //     "Unspash" +
+    //     " " +
+    //     "Freepik" +
+    //     " " +
+    //     "Pixabay" +
+    //     " " +
+    //     "Pexels"
+    // )}`;
+
+    const searchUrl = `https://www.google.com/search?tbm=isch&tbs=il:cl&q=${encodeURIComponent(
+      searchTerm
     )}`;
+
     await page.goto(searchUrl, { waitUntil: "networkidle2" });
 
     // Extract the page content

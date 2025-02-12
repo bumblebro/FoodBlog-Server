@@ -46,16 +46,20 @@ async function fetchImageUrls(searchTerm) {
     );
 
     // Navigate to Google Image Search
-    const searchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(
-      searchTerm +
-        " " +
-        "Unspash" +
-        " " +
-        "Freepik" +
-        " " +
-        "Pixabay" +
-        " " +
-        "Pexels"
+    // const searchUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(
+    //   searchTerm +
+    //     " " +
+    //     "Unspash" +
+    //     " " +
+    //     "Freepik" +
+    //     " " +
+    //     "Pixabay" +
+    //     " " +
+    //     "Pexels"
+    // )}`;
+
+    const searchUrl = `https://www.google.com/search?tbm=isch&tbs=il:cl&q=${encodeURIComponent(
+      searchTerm
     )}`;
     await page.goto(searchUrl, { waitUntil: "networkidle2" });
 
@@ -119,28 +123,3 @@ export async function POST(req: NextRequest) {
     return Response.json({ e });
   }
 }
-
-// import { NextRequest } from "next/server";
-// // import gis from "g-i-s";
-// import gis from "async-g-i-s";
-
-// export async function POST(req: NextRequest) {
-//   const body = await req.json();
-
-//   try {
-//     const results = await gis(body.query, {
-//       query: { safe: "on" },
-//       userAgent:
-//         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-//     });
-//     console.log(`res`, results);
-//     console.log(results.slice(0, 10));
-
-//     const url = results.find((item) => item.url.startsWith("https:"));
-
-//     return Response.json({ results: url });
-//   } catch (e) {
-//     console.error(e);
-//     return Response.json({ e });
-//   }
-// }
