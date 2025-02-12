@@ -1,6 +1,7 @@
 // @ts-nocheck
 
-"use server";
+// "use server";
+export const revalidate = 0;
 
 import { subSections } from "@/libs/Section";
 import axios from "axios";
@@ -407,15 +408,14 @@ async function Upload2() {
   startProcess();
 }
 
-export const revalidate = 0;
 
-export async function GET() {
+export async function GET(req: Request) {
   try {
     await Upload2();
 
-    return Response.json({ running: "run" });
+    return NextResponse.json({ running: "run" });
   } catch (error) {
     console.log(error);
-    return Response.json(error);
+    return NextResponse.json(error);
   }
 }
