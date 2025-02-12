@@ -134,6 +134,12 @@ async function image(query: string) {
         item.url.startsWith("https:") &&
         !/(shutterstock|instagram|facebook)/i.test(item.url)
     );
+    // let url = results.find(
+    //   (item) =>
+    //     item.url.startsWith("https:") &&
+    //     /unsplash|pixabay|pexels|freepik/i.test(item.url) && // Only allow these sources
+    //     !/(shutterstock|instagram|facebook)/i.test(item.url) // Block known paid/licensed sources
+    // );
 
     // if (url && url.url.includes("shutterstock")) {
     //   throw new Error("Shutterstock images are not allowed.");
@@ -167,11 +173,10 @@ async function getRandomPath(subSections: any) {
     thirdLevel[Math.floor(Math.random() * thirdLevel.length)];
   return [randomFirstLevel, randomSecondLevel, randomThirdLevel];
 }
+let successCount = 0;
+let failedCount = 0;
 
 async function Upload2() {
-  let successCount = 0;
-  let failedCount = 0;
-
   if (successCount == 10) {
     // refreshPage();
     return;
@@ -360,6 +365,7 @@ async function Upload2() {
             console.log(`SUCCESS COUNT`, successCount);
             console.log(`FAILED COUNT`, failedCount);
             console.log("STOOOOOPPPPINGGGGGGGGGGG");
+            return "Success";
           }
         } catch (error) {
           console.log(`errorrrrrr`, error);
@@ -415,9 +421,9 @@ async function Upload2() {
 
 export async function GET(req: Request) {
   try {
-    await Upload2();
+    const data = await Upload2();
 
-    return Response.json({ running: "run" });
+    return Response.json({ running: data });
   } catch (error) {
     console.log(error);
     return Response.json(error);
