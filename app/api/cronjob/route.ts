@@ -21,7 +21,7 @@ let timestorun = 1;
 
 ///////////////// Google Imageee
 
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import puppeteer from "puppeteer";
 
 const REGEX = /\["(\bhttps?:\/\/[^"]+)",(\d+),(\d+)\],null/g;
@@ -408,14 +408,13 @@ async function Upload2() {
   startProcess();
 }
 
-
 export async function GET(req: Request) {
   try {
     await Upload2();
 
-    return NextResponse.json({ running: "run" });
+    return Response.json({ running: "run" });
   } catch (error) {
     console.log(error);
-    return NextResponse.json(error);
+    return Response.json(error);
   }
 }
