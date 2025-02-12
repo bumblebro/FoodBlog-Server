@@ -132,7 +132,9 @@ async function image(query: string) {
     let url = results.find(
       (item) =>
         item.url.startsWith("https:") &&
-        !/(shutterstock|instagram|facebook)/i.test(item.url)
+        !/(Shutterstock|Instagram|Facebook|Stockcake|TikTok|GettyImages|AdobeStock|iStock|Alamy|123RF|EnvatoElements|Depositphotos|Dreamstime|Pond5|CanvaPro)/i.test(
+          item.url
+        )
     );
     // let url = results.find(
     //   (item) =>

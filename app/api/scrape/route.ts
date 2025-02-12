@@ -110,7 +110,9 @@ export async function POST(req: NextRequest) {
     let url = results.find(
       (item) =>
         item.url.startsWith("https:") &&
-        !/(shutterstock|instagram|facebook)/i.test(item.url)
+        !/(Shutterstock|Instagram|Facebook|Stockcake|TikTok|GettyImages|AdobeStock|iStock|Alamy|123RF|EnvatoElements|Depositphotos|Dreamstime|Pond5|CanvaPro)/i.test(
+          item.url
+        )
     );
 
     // if (url && url.url.includes("shutterstock")) {
