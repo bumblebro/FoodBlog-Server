@@ -407,6 +407,8 @@ async function Upload2() {
   startProcess();
 }
 
+export const revalidate = 0;
+
 export async function GET() {
   try {
     await Upload2();
