@@ -130,12 +130,16 @@ export default async function UPLOAD({
     // console.log(`Title list`, titlelist);
 
     const title = await titlelist[
-      Math.floor(Math.random() * titlelist.length) + 1
+      Math.floor(Math.random() * titlelist.length) // Corrected
     ];
 
     console.log(`title picked :`, title);
 
-    if (title.toLowerCase().includes("updated")) {
+    // if (title.toLowerCase().includes("updated")) {
+    //   throw new Error("Title cannot contain the word 'updated'.");
+    // }
+
+    if (typeof title === "string" && title.toLowerCase().includes("updated")) {
       throw new Error("Title cannot contain the word 'updated'.");
     }
 
