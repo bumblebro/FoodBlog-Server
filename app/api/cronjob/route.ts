@@ -179,10 +179,10 @@ let successCount = 0;
 let failedCount = 0;
 
 async function Upload2() {
-  if (successCount == 10) {
-    // refreshPage();
-    return;
-  }
+  // if (successCount == 10) {
+  //   // refreshPage();
+  //   return;
+  // }
   async function startProcess() {
     try {
       // Getting random section
