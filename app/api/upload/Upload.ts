@@ -14,15 +14,21 @@ export default async function UPLOAD({
   //   "AIzaSyA2bW3jhFQMlSRZvRyXZCTLbYczeoJruzc",
   //   "AIzaSyBwzqeVWzLPb-TjfbaqV5UIEBbN-xuF7Lg",
   // ];
-  const apiKeys = ["AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck"];
-  // Generate a random index
-  const randomIndex = Math.floor(Math.random() * apiKeys.length);
 
-  // Select the random API key
-  const selectedApiKey = apiKeys[randomIndex];
-  console.log(`API Used`, randomIndex, selectedApiKey);
+  // const apiKeys = ["AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck"];
 
-  const genAI = new GoogleGenerativeAI(selectedApiKey);
+  // const randomIndex = Math.floor(Math.random() * apiKeys.length);
+
+  // const selectedApiKey = apiKeys[randomIndex];
+  // console.log(`API Used`, randomIndex, selectedApiKey);
+
+  // const genAI = new GoogleGenerativeAI(selectedApiKey);
+
+  const apiKeys = process.env.NEXT_PUBLIC_GEMINIAI_API_URL;
+
+  console.log(`API Used`, apiKeys);
+
+  const genAI = new GoogleGenerativeAI(apiKeys || "");
 
   const today = new Date();
   const options: Intl.DateTimeFormatOptions = {
