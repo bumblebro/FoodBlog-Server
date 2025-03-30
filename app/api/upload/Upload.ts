@@ -100,7 +100,7 @@ export default async function UPLOAD({
     // `;
 
     const promptForTitle = `
-    Generate 100 unique, captivating, and non-repetitive recipe names for a blog under the sub-subsection "${subSubSection}". This sub-subsection belongs to the subsection "${subSection}" and the section "${section}". Ensure the recipes are relevent as of date ${formattedDate} and strictly dont mention this date in the title.
+    Generate 100 unique, captivating, and non-repetitive recipe names for a blog under the sub-subsection "${subSubSection}". This sub-subsection belongs to the subsection "${subSection}" and the section "${section}". Ensure the recipes are latest.
     
     The recipe names must be:
     - Clearly associated with the following topic hierarchy:
