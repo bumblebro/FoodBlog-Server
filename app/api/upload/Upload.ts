@@ -213,7 +213,7 @@ The structure of the blog should follow this format:
 9. **SEO Information:**
    - Include meta description, Open Graph title and description, primary keywords, and secondary keywords.
    - Primary Keywords: One primary keyword for SEO to rank top in Google search, analyze it properly.
-   - Secondary Keywords: Ten secondary keywords for SEO to rank top in Google search, analyze it properly.
+   - Secondary Keywords: Three secondary keywords for SEO to rank top in Google search, analyze it properly.
 
 Make sure the content is thoroughly researched and provides value to readers. Avoid filler content or placeholders, and focus on delivering substantial, fact-based information. Always use specific and relevant names, brands, or details related to the title provided.
 
@@ -332,11 +332,10 @@ Make sure the content is thoroughly researched and provides value to readers. Av
     "ogTitle": "How to Create the Perfect Homemade Pizza",
     "ogDescription": "Follow this step-by-step guide to make a perfect pizza at home, from kneading the dough to adding your favorite toppings.",
     "primaryKeywords": [
-      "how to make the best homemade pizza from scratch"
+      "easy pizza"
     ],
     "secondaryKeywords": [
-      "authentic Italian cuisine recipes for pizza and pasta lovers"
-    ]
+      "pizza from scratch", "making pizza", "best homemade pizza"
   }
 }`;
     const schema = {
