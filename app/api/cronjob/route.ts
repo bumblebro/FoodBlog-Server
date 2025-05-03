@@ -129,13 +129,26 @@ async function image(query: string) {
     //   (item) =>
     //     item.url.startsWith("https:") && !item.url.includes("shutterstock")
     // );
-    let url = results.find(
-      (item) =>
-        item.url.startsWith("https:") &&
+
+    // OLD CODE
+    // let url = results.find(
+    //   (item) =>
+    //     item.url.startsWith("https:") &&
+    //     !/(Shutterstock|Instagram|Facebook|Stockcake|TikTok|GettyImages|AdobeStock|iStock|Alamy|123RF|EnvatoElements|Depositphotos|Dreamstime|Pond5|CanvaPro)/i.test(
+    //       item.url
+    //     )
+    // );
+
+    let url = results.find((item) => {
+      const isHttps = item.url.startsWith("https:");
+      const isNotFromBlockedSource =
         !/(Shutterstock|Instagram|Facebook|Stockcake|TikTok|GettyImages|AdobeStock|iStock|Alamy|123RF|EnvatoElements|Depositphotos|Dreamstime|Pond5|CanvaPro)/i.test(
           item.url
-        )
-    );
+        );
+      const hasImageExtension = /\.(jpe?g|png|gif|webp|bmp)$/i.test(item.url);
+      return isHttps && isNotFromBlockedSource && hasImageExtension;
+    });
+
     // let url = results.find(
     //   (item) =>
     //     item.url.startsWith("https:") &&
