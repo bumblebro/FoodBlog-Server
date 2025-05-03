@@ -130,7 +130,7 @@ async function image(query: string) {
     //     item.url.startsWith("https:") && !item.url.includes("shutterstock")
     // );
 
-    // OLD CODE
+    //OLD 04-May-2025
     // let url = results.find(
     //   (item) =>
     //     item.url.startsWith("https:") &&
@@ -139,6 +139,7 @@ async function image(query: string) {
     //     )
     // );
 
+    // NEW 04-May-2025
     let url = results.find((item) => {
       const isHttps = item.url.startsWith("https:");
       const isNotFromBlockedSource =
