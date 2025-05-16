@@ -9,26 +9,26 @@ export default async function UPLOAD({
   subSection: string;
   subSubSection: string;
 }) {
-  // const apiKeys = [
-  //   "AIzaSyCXDKoQVeO41DjXic40S9ONZwF8oiMFTww",
-  //   "AIzaSyA2bW3jhFQMlSRZvRyXZCTLbYczeoJruzc",
-  //   "AIzaSyBwzqeVWzLPb-TjfbaqV5UIEBbN-xuF7Lg",
-  // ];
+   const apiKeys = [
+    "AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck",
+   "AIzaSyDRQg3-lHQWJpsx3wdhHJ_zvktiItpzCTk",
+    "AIzaSyA2bW3jhFQMlSRZvRyXZCTLbYczeoJruzc",
+ ];
 
-  // const apiKeys = ["AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck"];
+  //const apiKeys = ["AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck"];
 
-  // const randomIndex = Math.floor(Math.random() * apiKeys.length);
+  const randomIndex = Math.floor(Math.random() * apiKeys.length);
 
-  // const selectedApiKey = apiKeys[randomIndex];
-  // console.log(`API Used`, randomIndex, selectedApiKey);
+  const selectedApiKey = apiKeys[randomIndex];
+   console.log(`API Used`, randomIndex, selectedApiKey);
 
-  // const genAI = new GoogleGenerativeAI(selectedApiKey);
+  const genAI = new GoogleGenerativeAI(selectedApiKey);
 
-  const apiKeys = process.env.NEXT_PUBLIC_GEMINIAI_API_URL;
+ // const apiKeys = process.env.NEXT_PUBLIC_GEMINIAI_API_URL;
 
-  console.log(`API Used`, apiKeys);
+//  console.log(`API Used`, apiKeys);
 
-  const genAI = new GoogleGenerativeAI(apiKeys || "");
+ // const genAI = new GoogleGenerativeAI(apiKeys || "");
 
   const today = new Date();
   const options: Intl.DateTimeFormatOptions = {
@@ -45,7 +45,7 @@ export default async function UPLOAD({
     console.log("Start");
     // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-2.5-flash",
       generationConfig: {
         responseMimeType: "application/json",
       },
@@ -121,7 +121,7 @@ export default async function UPLOAD({
     };
 
     const model3 = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-2.5-flash",
       generationConfig: {
         responseMimeType: "application/json",
         responseSchema: schema1,
