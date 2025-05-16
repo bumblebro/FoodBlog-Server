@@ -1,5 +1,11 @@
 import { SchemaType, GoogleGenerativeAI } from "@google/generative-ai";
 
+// Define the sleep function
+function sleep(ms: any) {
+  console.log(`Waiting for 2 min until next request, Please hold on baby`);
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export default async function UPLOAD({
   section,
   subSection,
@@ -9,11 +15,11 @@ export default async function UPLOAD({
   subSection: string;
   subSubSection: string;
 }) {
-     const apiKeys = [
-      "AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck",
-     "AIzaSyDRQg3-lHQWJpsx3wdhHJ_zvktiItpzCTk",
-      "AIzaSyA2bW3jhFQMlSRZvRyXZCTLbYczeoJruzc",
-   ];
+  const apiKeys = [
+    "AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck",
+    "AIzaSyDRQg3-lHQWJpsx3wdhHJ_zvktiItpzCTk",
+    "AIzaSyA2bW3jhFQMlSRZvRyXZCTLbYczeoJruzc",
+  ];
 
   // const apiKeys = ["AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck"];
 
@@ -46,12 +52,12 @@ export default async function UPLOAD({
     // const body = await req.json();
     console.log("Start");
     // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
-      generationConfig: {
-        responseMimeType: "application/json",
-      },
-    });
+    // const model = genAI.getGenerativeModel({
+    //   model: "gemini-2.0-flash",
+    //   generationConfig: {
+    //     responseMimeType: "application/json",
+    //   },
+    // });
 
     // Generate 100 possible,recipe,  unique, non-repetitive, and captivating click-bait recipe titles for a Food and Drink niche blog under the sub-subsection "${subSubSection}", which falls under the subsection "${subSection}" and section "${section}" updated as of ${formattedDate}.
     //     const promptForTitle = `
@@ -150,6 +156,8 @@ export default async function UPLOAD({
     if (typeof title === "string" && title.toLowerCase().includes("updated")) {
       throw new Error("Title cannot contain the word 'updated'.");
     }
+
+    await sleep(120000); // Wait for 2 minutes
 
     const prompt = `Write a well-researched, engaging, and structured recipe blog post that contains a description, ingredients, directions to cook, and a conclusion, around 1500 to 2500 words, for the Food and Drink niche. The content should avoid repetitive phrasing, formulaic structures, and predictable sentence patterns, which are often detectable by AI content tools. Instead, rewrite these unnatural elements by varying sentence structures and word choices in a way that mimics human writing styles. Ensure the text has a natural flow and maintains reader engagement throughout, just like human writers who enhance clarity and readability through diverse language use.
 
@@ -943,7 +951,7 @@ Make sure the content is thoroughly researched and provides value to readers. Av
     };
 
     const model2 = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-2.0-flash",
       generationConfig: {
         responseMimeType: "application/json",
         responseSchema: schema,
