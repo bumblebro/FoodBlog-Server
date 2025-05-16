@@ -16,9 +16,9 @@ export default async function UPLOAD({
   subSubSection: string;
 }) {
   const apiKeys = [
-    "AIzaSyAmFmuQLHs_sHv-JmxGuh1lGoFsbPSLUec",
-    "AIzaSyAGZSdvW7-jNdSuYOWDuy-75-DNDjwyn1Q",
-    "AIzaSyAzL87x9mCyZahihEtNAM-nCbbV1p2jWo8",
+    // "AIzaSyAmFmuQLHs_sHv-JmxGuh1lGoFsbPSLUec",
+    // "AIzaSyAGZSdvW7-jNdSuYOWDuy-75-DNDjwyn1Q",
+    // "AIzaSyAzL87x9mCyZahihEtNAM-nCbbV1p2jWo8",
     "AIzaSyDUYOOcFPT_Rng-V3sbma24sclKMmZok54",
   ];
 
