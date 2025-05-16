@@ -15,29 +15,29 @@ export default async function UPLOAD({
   subSection: string;
   subSubSection: string;
 }) {
-  const apiKeys = [
-    // "AIzaSyAmFmuQLHs_sHv-JmxGuh1lGoFsbPSLUec",
-    // "AIzaSyAGZSdvW7-jNdSuYOWDuy-75-DNDjwyn1Q",
-    // "AIzaSyAzL87x9mCyZahihEtNAM-nCbbV1p2jWo8",
-    "AIzaSyDUYOOcFPT_Rng-V3sbma24sclKMmZok54",
-  ];
+  // const apiKeys = [
+  //   // "AIzaSyAmFmuQLHs_sHv-JmxGuh1lGoFsbPSLUec",
+  //   // "AIzaSyAGZSdvW7-jNdSuYOWDuy-75-DNDjwyn1Q",
+  //   // "AIzaSyAzL87x9mCyZahihEtNAM-nCbbV1p2jWo8",
+  //   "AIzaSyDUYOOcFPT_Rng-V3sbma24sclKMmZok54",
+  // ];
 
   // const apiKeys = ["AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck"];
 
   //const apiKeys = ["AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck"];
 
-  const randomIndex = Math.floor(Math.random() * apiKeys.length);
+  // const randomIndex = Math.floor(Math.random() * apiKeys.length);
 
-  const selectedApiKey = apiKeys[randomIndex];
-  console.log(`API Used`, randomIndex, selectedApiKey);
+  // const selectedApiKey = apiKeys[randomIndex];
+  // console.log(`API Used`, randomIndex, selectedApiKey);
 
-  const genAI = new GoogleGenerativeAI(selectedApiKey);
+  // const genAI = new GoogleGenerativeAI(selectedApiKey);
 
-  // const apiKeys = process.env.NEXT_PUBLIC_GEMINIAI_API_URL;
+  const apiKeys = process.env.NEXT_PUBLIC_GEMINIAI_API_URL;
 
-  //  console.log(`API Used`, apiKeys);
+   console.log(`API Used`, apiKeys);
 
-  // const genAI = new GoogleGenerativeAI(apiKeys || "");
+  const genAI = new GoogleGenerativeAI(apiKeys || "");
 
   const today = new Date();
   const options: Intl.DateTimeFormatOptions = {
