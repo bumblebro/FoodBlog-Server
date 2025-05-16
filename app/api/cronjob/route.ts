@@ -118,6 +118,7 @@ async function fetchImageUrls(searchTerm: any) {
 
 // Define the sleep function
 function sleep(ms) {
+  console.log(`Waiting for 2 min until next request, Please hold on baby`,);
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -446,7 +447,6 @@ async function Upload2() {
       startProcess(); // Handle errors and retry
     }
   }
-  await sleep(120000); // Wait for 2 minutes
   startProcess();
 }
 
