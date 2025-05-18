@@ -210,7 +210,7 @@ The structure of the blog should follow this format:
 
 6. **Recipe Description:**
    - Include the following fields:
-     - **Short Description:** A concise summary of the recipe (1-2 sentences).
+     - **Short Description:** A concise keyword rich summary of the recipe (1-2 sentences).
      - **Detailed Description:** A detailed blog content of the recipe and image queries, broken into an array of 2-3 strings (each string representing a paragraph or chunk of content).
 
 7. **Instructions:**  
@@ -416,7 +416,7 @@ Make sure the content is thoroughly researched and provides value to readers. Av
           properties: {
             shortDescription: {
               type: SchemaType.STRING,
-              description: "Short summary of the recipe",
+              description: "Short keyword rich summary of the recipe",
               nullable: false,
             },
             detailedDescription: {
