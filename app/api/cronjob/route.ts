@@ -304,12 +304,12 @@ async function Upload2() {
               return response;
             }
 
-            const response = await runUntilResponse(item.description); //  Remove for no humanising
+            // const response = await runUntilResponse(item.description); //  Remove for no humanising
 
             return {
               // title: item.title,
-              description: response, //add for humanising
-              // description: item.description,    Remove for no humanising
+              // description: response, //add for humanising
+              description: item.description,    //Remove for no humanising
               url: link.url,
               alt: item.imageQuery,
             };
