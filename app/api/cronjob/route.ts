@@ -118,7 +118,7 @@ async function fetchImageUrls(searchTerm: any) {
 
 // Define the sleep function
 function sleep(ms) {
-  console.log(`Waiting for 2 min until next request, Please hold on baby`,);
+  console.log(`Waiting for 2 min until next request, Please hold on baby`);
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -309,7 +309,7 @@ async function Upload2() {
             return {
               // title: item.title,
               // description: response, //add for humanising
-              description: item.description,    //Remove for no humanising
+              description: item.description, //Remove for no humanising
               url: link.url,
               alt: item.imageQuery,
             };
@@ -378,6 +378,7 @@ async function Upload2() {
           const newBlog = await prisma.foodBlogs.create({
             data: reqres,
           });
+          await prisma.$disconnect();
           console.log("UPLOAD SUCCESSFULL", newBlog);
           successCount = successCount + 1;
           if (successCount < timestorun) {
