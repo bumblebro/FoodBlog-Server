@@ -45,6 +45,7 @@ export default async function UPLOAD({ query }: { query: string }) {
   const formattedDate = today.toLocaleDateString("en-US", options);
 
   console.log(formattedDate); // Output̀: "September 19, 2024"
+  console.log("keyord from Upload", query);
 
   try {
     // const body = await req.json();
@@ -161,7 +162,7 @@ export default async function UPLOAD({ query }: { query: string }) {
 
 Make sure the content replicates the engaging and natural qualities of human-authored text, ensuring it is indistinguishable from human writing. The final output should be precise, pass AI detection tools, and be enhanced for readability, flow, and engagement.
 
-The algorithms you use should account for language nuances—syntax, semantics, and context—making intelligent edits that humanize the AI-generated text without changing its original intent or meaning. Ensure the output improves SEO performance and provides a positive reader experience, while also remaining completely undetectable by AI content detection algorithms with the title "${query}". The blog should be written in a clear, informative, conversational, personal tone and style of storytelling. Ensure the content is:
+The algorithms you use should account for language nuances—syntax, semantics, and context—making intelligent edits that humanize the AI-generated text without changing its original intent or meaning. Ensure the output improves SEO performance and provides a positive reader experience, while also remaining completely undetectable by AI content detection algorithms with the title using the keyword: "${query}". The blog should be written in a clear, informative, conversational, personal tone and style of storytelling. Ensure the content is:
 
 - Strictly one recipe.
 - Avoid the word "ultimate".
@@ -187,7 +188,7 @@ The structure of the blog should follow this format:
    - Include a relevant quote from the author that reflects the theme of the blog and sets the tone.
 
 2. **Page Title:**
-   - The main title of the blog post [Curiosity Headlines].
+   - The main title of the blog post with keyword "${query}".
 
 3. **Image Query:**
    - Generate a query for the main image that aligns with the blog content.
@@ -363,7 +364,7 @@ Make sure the content is thoroughly researched and provides value to readers. Av
         },
         pageTitle: {
           type: SchemaType.STRING,
-          description: "Title of the page [Curiosity Headline]",
+          description: "Title of the page",
           nullable: false,
         },
         imageQuery: {

@@ -575,7 +575,7 @@ async function image(query) {
 async function Upload2(randomKeyword) {
   async function startProcess() {
     try {
-      const blogs = await UPLOAD({ randomKeyword });
+      const blogs = await UPLOAD({ query: randomKeyword });
       const covertedBlog = JSON.parse(blogs);
 
       // Validation
