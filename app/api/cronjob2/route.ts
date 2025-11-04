@@ -714,23 +714,25 @@ export async function GET() {
     // Parse the JSON array from env
     // const keywords = JSON.parse(process.env.NEXT_PUBLIC_KEYWORDS || "[]");
     const envVar = process.env.NEXT_PUBLIC_KEYWORDS || "[]";
-    let keywords: string[] = [];
+    // let keywords: string[] = [];
 
-    try {
-      // Try parsing normally first
-      keywords = JSON.parse(envVar);
-    } catch {
-      // If it fails, try unescaping and parsing again
-      try {
-        const cleaned = envVar
-          .replace(/^"+|"+$/g, "") // remove surrounding quotes
-          .replace(/\\"/g, '"'); // unescape quotes
-        keywords = JSON.parse(cleaned);
-      } catch (err) {
-        console.error("⚠️ Failed to parse even after cleaning:", err);
-        throw new Error("Invalid NEXT_PUBLIC_KEYWORDS format");
-      }
-    }
+    // try {
+    //   // Try parsing normally first
+    //   keywords = JSON.parse(envVar);
+    // } catch {
+    //   // If it fails, try unescaping and parsing again
+    //   try {
+    //     const cleaned = envVar
+    //       .replace(/^"+|"+$/g, "") // remove surrounding quotes
+    //       .replace(/\\"/g, '"'); // unescape quotes
+    //     keywords = JSON.parse(cleaned);
+    //   } catch (err) {
+    //     console.error("⚠️ Failed to parse even after cleaning:", err);
+    //     throw new Error("Invalid NEXT_PUBLIC_KEYWORDS format");
+    //   }
+    // }
+
+    const keywords = process.env.NEXT_PUBLIC_KEYWORDS?.split("|") || [];
 
     if (!Array.isArray(keywords) || keywords.length === 0) {
       throw new Error("NEXT_PUBLIC_KEYWORDS is empty or invalid");
