@@ -602,9 +602,20 @@ async function Upload2(randomKeyword) {
         return await startProcess();
       }
 
-      const mainImg = await image(covertedBlog.imageQuery);
-      if (!mainImg?.url) throw new Error("Main image fetch failed");
+      let mainImg = await image(covertedBlog.imageQuery);
+      if (!mainImg?.url) {
+        console.log("❌ No valid image found for:", covertedBlog.imageQuery);
+        console.warn("⚠️ Main image failed — retrying with 'food' suffix...");
+        mainImg = await image(`${covertedBlog.imageQuery} food`);
 
+        if (!mainImg?.url) {
+          console.warn(
+            "⚠️ Main image failed again — retrying with 'recipe dish' suffix..."
+          );
+          mainImg = await image(`${covertedBlog.imageQuery} recipe dish`);
+          if (!mainImg?.url) throw new Error("Main image fetch failed");
+        }
+      }
       // Step images
       const results = await Promise.all(
         covertedBlog.recipeDescription.detailedDescription.map(async (item) => {
@@ -615,7 +626,20 @@ async function Upload2(randomKeyword) {
               alt: "null",
             };
           }
-          const stepImg = await image(item.imageQuery);
+          let stepImg = await image(item.imageQuery);
+          if (!stepImg?.url) {
+            console.log("❌ No step image found for:", item.imageQuery);
+            console.warn("⚠️ Retrying with 'recipe step' suffix...");
+            stepImg = await image(`${item.imageQuery} recipe step`);
+
+            if (!stepImg?.url) {
+              console.warn(
+                "⚠️ Step image failed again — retrying with 'food cooking step' suffix..."
+              );
+              stepImg = await image(`${item.imageQuery} food cooking step`);
+              if (!stepImg?.url) throw new Error("Step image fetch failed");
+            }
+          }
           return {
             description: item.description,
             url: stepImg?.url || "null",
@@ -643,7 +667,9 @@ async function Upload2(randomKeyword) {
         equipments: covertedBlog.equipments,
         slug: `Others/Others/Others/${slugify(covertedBlog.pageTitle)}`,
       };
+      // return { success: true, data: reqres };
 
+      console.log(`title`, slugify(covertedBlog.pageTitle));
       const newBlog = await prisma.foodBlogs.create({ data: reqres });
       await prisma.$disconnect();
 
@@ -680,7 +706,7 @@ async function Upload2(randomKeyword) {
       };
 
       console.log("✅ UPLOAD SUCCESSFUL:", newBlog.title);
-
+      failedCount = 0;
       return responseObject;
 
       successCount++;
@@ -694,8 +720,14 @@ async function Upload2(randomKeyword) {
     } catch (error) {
       console.error("⚠️ Error occurred, retrying...", error);
       failedCount++;
-      await sleep(30000);
-      return await startProcess();
+      console.log("failed count", failedCount);
+      if (failedCount == 2) {
+        await sleep(2147483);
+        // return null;
+      } else {
+        await sleep(30000);
+        return await startProcess();
+      }
     }
   }
 
