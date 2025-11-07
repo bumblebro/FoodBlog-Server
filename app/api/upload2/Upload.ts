@@ -18,17 +18,27 @@ export default async function UPLOAD({ query }: { query: string }) {
 
   //const apiKeys = ["AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck"];
 
-  const apiKeys = [
-    process.env.NEXT_PUBLIC_GEMINIAI_API_URL,
-    process.env.NEXT_PUBLIC_GEMINIAI_API_URL1,
-  ];
+  const apiKeys = process.env.NEXT_PUBLIC_GEMINIAI_API_URL?.split("|") || [];
 
-  const randomIndex = Math.floor(Math.random() * apiKeys.length);
+  if (!Array.isArray(apiKeys) || apiKeys.length === 0) {
+    throw new Error("NEXT_PUBLIC_KEYWORDS is empty or invalid");
+  }
 
-  const selectedApiKey = apiKeys[randomIndex];
-  console.log(`API Used`, randomIndex, selectedApiKey);
+  // Pick a random keyword
+  const randomApi = apiKeys[Math.floor(Math.random() * apiKeys.length)];
+  console.log(`📦 Selected random Api:`, randomApi);
 
-  const genAI = new GoogleGenerativeAI(selectedApiKey || "");
+  // const apiKeys = [
+  //   process.env.NEXT_PUBLIC_GEMINIAI_API_URL,
+  //   process.env.NEXT_PUBLIC_GEMINIAI_API_URL1,
+  // ];
+
+  // const randomIndex = Math.floor(Math.random() * apiKeys.length);
+
+  // const selectedApiKey = apiKeys[randomIndex];
+  // console.log(`API Used`, randomIndex, selectedApiKey);
+
+  const genAI = new GoogleGenerativeAI(randomApi || "");
 
   // const apiKeys = process.env.NEXT_PUBLIC_GEMINIAI_API_URL;
 
@@ -188,7 +198,7 @@ The structure of the blog should follow this format:
    - Include a relevant quote from the author that reflects the theme of the blog and sets the tone.
 
 2. **Page Title:**
-   - The main title of the blog post.
+   - The main title of the blog post".
 
 3. **Image Query:**
    - Generate a query for the main image that aligns with the blog content.
