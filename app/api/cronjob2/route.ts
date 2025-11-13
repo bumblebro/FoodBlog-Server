@@ -412,7 +412,11 @@ async function Upload2(randomKeyword: any) {
 
       if (attempt === 3) {
         console.error("❌ Process failed thrice — aborting.");
-        throw err; // **Important**: throw the error to propagate it out of the function
+        // throw err; // **Important**: throw the error to propagate it out of the function
+        return new Response(JSON.stringify({ error: "Process failed" }), {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        });
       }
 
       console.log("⏳ Retrying in 90 seconds...");
