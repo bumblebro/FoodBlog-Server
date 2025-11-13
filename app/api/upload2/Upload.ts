@@ -46,20 +46,11 @@ export default async function UPLOAD({ query }: { query: string }) {
 
   // const genAI = new GoogleGenerativeAI(apiKeys || "");
 
-  const today = new Date();
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  const formattedDate = today.toLocaleDateString("en-US", options);
-
-  console.log(formattedDate); // Output̀: "September 19, 2024"
-  console.log("keyord from Upload", query);
+  console.log("Asking Ai for blog using title keyword: ", query);
 
   try {
     // const body = await req.json();
-    console.log("Start");
+    // console.log("Start");
     // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
     // const model = genAI.getGenerativeModel({
     //   model: "gemini-2.0-flash",
@@ -970,13 +961,13 @@ Make sure the content is thoroughly researched and provides value to readers. Av
 
     const result = await model2.generateContent(prompt);
     const response1 = await result.response;
-    // console.log(response);
     const data1 = response1.text();
-    console.log(data1);
+    console.log("Got Blog from AI for title", query);
     // console.log(title, section, subSection, subSubSection);
     return data1;
   } catch (error) {
-    console.log(`error message`, error);
-    return error;
+    // console.log(`error message`, error?.errorDetails[1]?.message);
+    //@ts-ignore
+    return error?.errorDetails[1]?.message;
   }
 }
