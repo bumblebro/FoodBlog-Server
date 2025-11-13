@@ -412,13 +412,7 @@ async function Upload2(randomKeyword: any) {
 
       if (attempt === 3) {
         console.error("❌ Process failed thrice — aborting.");
-        // throw err; // **Important**: throw the error to propagate it out of the function
-        return {
-          success: false,
-          error: err instanceof Error ? err.message : "Unknown error",
-          attempts: attempt,
-          keyword: randomKeyword,
-        };
+        throw err; // **Important**: throw the error to propagate it out of the function
       }
 
       console.log("⏳ Retrying in 90 seconds...");
@@ -429,7 +423,7 @@ async function Upload2(randomKeyword: any) {
   }
 
   // **Optional**: If loop ends without return or throw, you might throw to signal something went wrong
-  // throw new Error("Upload2 failed after all attempts");
+  throw new Error("Upload2 failed after all attempts");
 }
 
 //   // ✅ Important: return the awaited promise chain
@@ -494,7 +488,6 @@ export async function GET() {
       "✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅"
     );
     // return Response.json(data);
-
     return new Response(JSON.stringify(data), {
       status: 200,
       headers: { "Content-Type": "application/json" },
@@ -514,7 +507,7 @@ export async function GET() {
     );
     const message = (error as Error)?.message || "Something went wrong";
     return new Response(JSON.stringify({ error: message }), {
-      status: 200,
+      status: 500,
       headers: { "Content-Type": "application/json" },
     });
   }
