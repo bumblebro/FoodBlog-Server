@@ -18,7 +18,7 @@ export default async function UPLOAD({ query }: { query: string }) {
 
   //const apiKeys = ["AIzaSyAplveCGzwidcNP5pNzoSBuwiLoattwFck"];
 
-  const apiKeys = process.env.NEXT_PUBLIC_GEMINIAI_API_URL?.split("|") || [];
+  const apiKeys = process.env.NEXT_PUBLIC_GEMINIAI_API_URL?.split("*") || [];
 
   if (!Array.isArray(apiKeys) || apiKeys.length === 0) {
     throw new Error("NEXT_PUBLIC_KEYWORDS is empty or invalid");
