@@ -493,6 +493,7 @@ export async function GET() {
     console.warn(
       "✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅"
     );
+    // .
     // return Response.json(data);
 
     return new Response(JSON.stringify(data), {
