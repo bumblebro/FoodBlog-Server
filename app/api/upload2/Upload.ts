@@ -952,7 +952,7 @@ Make sure the content is thoroughly researched and provides value to readers. Av
     };
 
     const model2 = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
+      model: "gemini-2.5-flash",
       generationConfig: {
         responseMimeType: "application/json",
         responseSchema: schema,
