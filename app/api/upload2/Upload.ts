@@ -223,7 +223,66 @@ The structure of the blog should follow this format:
 
 9. **SEO Information:**
    - Include meta description, Open Graph title and description, primary keywords, and secondary keywords.
-   - Primary Keywords: One primary keyword for SEO to rank top in Google search, analyze it properly.
+   - Primary Keywords: Select ONE appropriate keyword from the following list based ONLY on the recipe type:[
+  "Easy Recipes",
+  "Quick & Simple Meals",
+  "Healthy Recipes",
+  "Comfort Food",
+  "Budget-Friendly Recipes",
+
+  "Breakfast Recipes",
+  "Lunch Ideas",
+  "Dinner Recipes",
+  "Snacks & Appetizers",
+  "Meal Prep Recipes",
+  "One-Pot & One-Pan Meals",
+  "30-Minute Meals",
+
+  "Desserts",
+  "Cakes & Cupcakes",
+  "Cookies & Bars",
+  "Baking Recipes",
+  "No-Bake Desserts",
+  "Chocolate Desserts",
+
+  "Chicken Recipes",
+  "Beef & Meat Recipes",
+  "Seafood & Fish Recipes",
+  "Vegetarian Recipes",
+  "Vegan Recipes",
+  "Pasta Recipes",
+  "Rice & Grain Dishes",
+  "Vegetable Recipes",
+  "Fruit-Based Recipes",
+
+  "Indian Recipes",
+  "Italian Recipes",
+  "Mexican Recipes",
+  "Chinese Recipes",
+  "American Classics",
+  "Mediterranean Recipes",
+  "Thai Recipes",
+  "Japanese Recipes",
+  "Middle Eastern Recipes",
+
+  "Holiday & Festive Recipes",
+  "Party Food Ideas",
+  "Summer Recipes",
+  "Winter Recipes",
+  "Spring Recipes",
+  "Fall Recipes",
+  "BBQ & Grilling Recipes",
+
+  "Air Fryer Recipes",
+  "Instant Pot Recipes",
+  "Slow Cooker Recipes",
+  "Baking & Oven Recipes",
+  "No-Cook Recipes",
+
+  "Smoothies & Juices",
+  "Coffee & Tea Recipes",
+  "Mocktails & Drinks"
+]
    - Secondary Keywords: Three secondary keywords for SEO to rank top in Google search, analyze it properly.
 
 Make sure the content is thoroughly researched and provides value to readers. Avoid filler content or placeholders, and focus on delivering substantial, fact-based information. Always use specific and relevant names, brands, or details related to the title provided.
@@ -343,7 +402,7 @@ Make sure the content is thoroughly researched and provides value to readers. Av
     "ogTitle": "How to Create the Perfect Homemade Pizza",
     "ogDescription": "Follow this step-by-step guide to make a perfect pizza at home, from kneading the dough to adding your favorite toppings.",
     "primaryKeywords": [
-      "easy pizza"
+      "Easy Recipes"
     ],
     "secondaryKeywords": [
       "pizza from scratch", "making pizza", "best homemade pizza"
@@ -916,6 +975,59 @@ Make sure the content is thoroughly researched and provides value to readers. Av
               description: "Primary keywords for SEO",
               items: {
                 type: SchemaType.STRING,
+                enum: [
+                  "Easy Recipes",
+                  "Quick & Simple Meals",
+                  "Healthy Recipes",
+                  "Comfort Food",
+                  "Budget-Friendly Recipes",
+                  "Breakfast Recipes",
+                  "Lunch Ideas",
+                  "Dinner Recipes",
+                  "Snacks & Appetizers",
+                  "Meal Prep Recipes",
+                  "One-Pot & One-Pan Meals",
+                  "30-Minute Meals",
+                  "Desserts",
+                  "Cakes & Cupcakes",
+                  "Cookies & Bars",
+                  "Baking Recipes",
+                  "No-Bake Desserts",
+                  "Chocolate Desserts",
+                  "Chicken Recipes",
+                  "Beef & Meat Recipes",
+                  "Seafood & Fish Recipes",
+                  "Vegetarian Recipes",
+                  "Vegan Recipes",
+                  "Pasta Recipes",
+                  "Rice & Grain Dishes",
+                  "Vegetable Recipes",
+                  "Fruit-Based Recipes",
+                  "Indian Recipes",
+                  "Italian Recipes",
+                  "Mexican Recipes",
+                  "Chinese Recipes",
+                  "American Classics",
+                  "Mediterranean Recipes",
+                  "Thai Recipes",
+                  "Japanese Recipes",
+                  "Middle Eastern Recipes",
+                  "Holiday & Festive Recipes",
+                  "Party Food Ideas",
+                  "Summer Recipes",
+                  "Winter Recipes",
+                  "Spring Recipes",
+                  "Fall Recipes",
+                  "BBQ & Grilling Recipes",
+                  "Air Fryer Recipes",
+                  "Instant Pot Recipes",
+                  "Slow Cooker Recipes",
+                  "Baking & Oven Recipes",
+                  "No-Cook Recipes",
+                  "Smoothies & Juices",
+                  "Coffee & Tea Recipes",
+                  "Mocktails & Drinks",
+                ],
               },
               nullable: false,
             },
@@ -966,7 +1078,7 @@ Make sure the content is thoroughly researched and provides value to readers. Av
     // console.log(title, section, subSection, subSubSection);
     return data1;
   } catch (error) {
-    // console.log(`error message`, error?.errorDetails[1]?.message);
+    console.log(`error message`, error);
     //@ts-ignore
     return error?.errorDetails[1]?.message;
   }
