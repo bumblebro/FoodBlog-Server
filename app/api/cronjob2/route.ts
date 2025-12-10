@@ -20,6 +20,64 @@ let failedCount = 0;
 
 const REGEX = /\["(\bhttps?:\/\/[^"]+)",(\d+),(\d+)\],null/g;
 
+const boardMap: Record<string, string> = {
+  "Easy Recipes": "1004936173041881993",
+  "Quick & Simple Meals": "1004936173041881994",
+  "Healthy Recipes": "1004936173041881995",
+  "Comfort Food": "1004936173041881996",
+  "Budget-Friendly Recipes": "1004936173041881997",
+  "Breakfast Recipes": "1004936173041503557",
+  "Lunch Ideas": "1004936173041881999",
+  "Dinner Recipes": "1004936173041503561",
+  "Snacks & Appetizers": "1004936173041882001",
+  "Meal Prep Recipes": "1004936173041882002",
+  "One-Pot & One-Pan Meals": "1004936173041882003",
+  "30-Minute Meals": "1004936173041882004",
+  Desserts: "1004936173041882005",
+  "Cakes & Cupcakes": "1004936173041882006",
+  "Cookies & Bars": "1004936173041882007",
+  "Baking Recipes": "1004936173041503582",
+  "No-Bake Desserts": "1004936173041882009",
+  "Chocolate Desserts": "1004936173041882010",
+  "Chicken Recipes": "1004936173041882011",
+  "Beef & Meat Recipes": "1004936173041882012",
+  "Seafood & Fish Recipes": "1004936173041882013",
+  "Vegetarian Recipes": "1004936173041503566",
+  "Vegan Recipes": "1004936173041503569",
+  "Pasta Recipes": "1004936173041882016",
+  "Rice & Grain Dishes": "1004936173041882017",
+  "Vegetable Recipes": "1004936173041882018",
+  "Fruit-Based Recipes": "1004936173041882019",
+  "Indian Recipes": "1004936173041747897",
+  "Italian Recipes": "1004936173041503523",
+  "Mexican Recipes": "1004936173041503539",
+  "Chinese Recipes": "1004936173041882024",
+  "American Classics": "1004936173041882025",
+  "Mediterranean Recipes": "1004936173041503543",
+  "Thai Recipes": "1004936173041882028",
+  "Japanese Recipes": "1004936173041503552",
+  "Middle Eastern Recipes": "1004936173041503617",
+  "Holiday & Festive Recipes": "1004936173041882031",
+  "Party Food Ideas": "1004936173041882032",
+  "Summer Recipes": "1004936173041503613",
+  "Winter Recipes": "1004936173041503615",
+  "Spring Recipes": "1004936173041503612",
+  "Fall Recipes": "1004936173041503614",
+  "BBQ & Grilling Recipes": "1004936173041882037",
+  "Air Fryer Recipes": "1004936173041882038",
+  "Instant Pot Recipes": "1004936173041503597",
+  "Slow Cooker Recipes": "1004936173041503596",
+  "Baking & Oven Recipes": "1004936173041882041",
+  "No-Cook Recipes": "1004936173041503602",
+  "Smoothies & Juices": "1004936173041882043",
+  "Coffee & Tea Recipes": "1004936173041882044",
+  "Mocktails & Drinks": "1004936173041882045",
+};
+
+function getBoardId(boardName: string) {
+  return boardMap[boardName] || null;
+}
+
 // Sleep helper
 function sleep(ms: any) {
   // console.log(`⏳ Waiting ${ms / 1000 / 60} min before next request...`);
@@ -402,6 +460,8 @@ async function Upload2(randomKeyword: any) {
             )}&cover=${encodeURIComponent(newBlog.imageurl)}`,
         },
         randomKeyword,
+        boardName: covertedBlog.seo.primaryKeywords[0],
+        boardId: getBoardId(covertedBlog.seo.primaryKeywords[0]),
       };
 
       console.log("✅ Upload successful:", newBlog.title);
