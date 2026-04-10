@@ -1,3 +1,5 @@
+
+
 //@ts-ignore
 
 export const revalidate = 0;
@@ -8,9 +10,7 @@ import slugify from "slugify";
 import { CONVERT } from "../humanizee/Convert";
 import { PrismaClient } from "@prisma/client";
 import { withAccelerate } from "@prisma/extension-accelerate";
-import puppeteer from "puppeteer";
 import UPLOAD from "../upload2/Upload";
-import gis from "async-g-i-s";
 
 const prisma = new PrismaClient().$extends(withAccelerate());
 
@@ -91,81 +91,112 @@ const unicodeToString = (content: any) =>
   );
 
 // Scrape image URLs from Google Images
-async function fetchImageUrls(searchTerm: any) {
+async function fetchImageUrls(searchTerm: string) {
   if (!searchTerm || typeof searchTerm !== "string")
     throw new TypeError("searchTerm must be a string.");
 
+  console.log(`🔍 Scraping images for: ${searchTerm}`);
+
+  // Dynamically import puppeteer-extra and the stealth plugin to avoid Next.js static analysis errors
+  const { default: puppeteer } = await import("puppeteer-extra");
+  const { default: StealthPlugin } = await import("puppeteer-extra-plugin-stealth");
+  
+  // @ts-ignore
+  if (!puppeteer._isStealthLoaded) {
+    puppeteer.use(StealthPlugin());
+    // @ts-ignore
+    puppeteer._isStealthLoaded = true;
+  }
+
   const browser = await puppeteer.launch({
     headless: true,
-    defaultViewport: null,
     args: [
-      "--disable-gpu",
-      "--window-size=1920,1080",
       "--no-sandbox",
-      "--no-zygote",
       "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-accelerated-2d-canvas",
+      "--no-first-run",
+      "--no-zygote",
       "--single-process",
-      "--headless=new",
+      "--disable-gpu",
     ],
   });
 
   try {
     const page = await browser.newPage();
+    await page.setViewport({ width: 1280, height: 800 });
     await page.setUserAgent(
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36"
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
     );
 
-    const searchUrl = `https://www.google.com/search?tbm=isch&tbs=il:cl&q=${encodeURIComponent(
-      searchTerm
-    )}`;
-    await page.goto(searchUrl, { waitUntil: "networkidle2" });
+    // Using DuckDuckGo as it is more reliable for scraping and returns high-quality results
+    const searchUrl = `https://duckduckgo.com/?q=${encodeURIComponent(searchTerm)}&iax=images&ia=images`;
+    await page.goto(searchUrl, { waitUntil: "networkidle2", timeout: 30000 });
 
-    const content = await page.content();
-    const results = [];
-    let result;
-    while ((result = REGEX.exec(content))) {
-      results.push({
-        url: unicodeToString(result[1]),
-        height: +result[2],
-        width: +result[3],
+    // Wait a bit for the images to render
+    await new Promise(r => setTimeout(r, 2000));
+
+    const results = await page.evaluate(() => {
+      const items: { url: string; alt: string }[] = [];
+      const imgs = document.querySelectorAll('img.tile--img__img, img[src*="external-content.duckduckgo.com"]');
+      
+      imgs.forEach(img => {
+        const src = (img as HTMLImageElement).src;
+        if (src && src.startsWith('http')) {
+          items.push({
+            url: src,
+            alt: (img as HTMLImageElement).alt || ''
+          });
+        }
       });
-    }
 
+      return items;
+    });
+
+    console.log(`✅ Found ${results.length} images from DDG`);
     return results;
   } catch (error) {
     console.error("Error fetching image URLs:", error);
-    throw new Error("Error fetching image URLs");
+    return [];
   } finally {
-    const pages = await browser.pages();
-    await Promise.all(pages.map((p) => p.close()));
-    console.log("✅ All pages closed");
     await browser.close();
-    const childProcess = browser.process();
-    if (childProcess) childProcess.kill(9);
   }
 }
 
 // Get a valid image URL
-async function image(query: any) {
+async function image(query: string) {
   try {
-    // const results = await fetchImageUrls(query);
-    const results = await gis(query);
-    // console.log(results.slice(0, 10));
-    // console.log(`Image results`, results);
-    const url = results.find((item) => {
+    const results = await fetchImageUrls(query);
+    
+    if (!results || results.length === 0) {
+       console.log(`⚠️ No image results found for query: ${query}`);
+       return null;
+    }
+
+    const url = results.find((item: any) => {
       const isHttps = item.url.startsWith("https:");
       const isNotFromBlockedSource =
         !/(Shutterstock|Instagram|Facebook|Stockcake|TikTok|GettyImages|AdobeStock|iStock|Alamy|123RF|EnvatoElements|Depositphotos|Dreamstime|Pond5|CanvaPro)/i.test(
           item.url
         );
-      const hasImageExtension = /\.(jpe?g|png|gif|webp|bmp)$/i.test(item.url);
-      return isHttps && isNotFromBlockedSource && hasImageExtension;
+      
+      // Some Google results are base64, we want real URLs
+      const isNotData = !item.url.startsWith('data:');
+      
+      // Heuristic: usually real image URLs end with an extension or are from reliable CDNs
+      const hasImageExtension = /\.(jpe?g|png|gif|webp|bmp)/i.test(item.url);
+      const isFromReliableCDN = item.url.includes('gstatic.com') || 
+                                item.url.includes('googleusercontent.com') || 
+                                item.url.includes('bing.net') || 
+                                item.url.includes('duckduckgo.com');
+
+      return isHttps && isNotFromBlockedSource && isNotData && (hasImageExtension || isFromReliableCDN);
     });
-    // console.log(`Got Image`, url);
+
     return url;
   } catch (e) {
-    console.error(e);
-    throw e;
+    console.error("Error in image function:", e);
+    return null;
   }
 }
 

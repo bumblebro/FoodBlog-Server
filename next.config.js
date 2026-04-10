@@ -1,6 +1,7 @@
 module.exports = {
   experimental: {
     esmExternals: "loose",
+    serverComponentsExternalPackages: ["puppeteer-extra", "puppeteer-extra-plugin-stealth", "puppeteer"],
   },
   images: {
     remotePatterns: [
